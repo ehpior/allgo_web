@@ -11,7 +11,11 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/**" />
-			<beans:bean class="com.allgo.web.interceptor.testInterceptor" />
+			<exclude-mapping path="/resources/**"/>
+			<exclude-mapping path="/*.login"/>
+			<exclude-mapping path="/*.do"/>
+			<beans:bean class="com.allgo.web.interceptor.AdminInterceptor" />
+			<!-- <beans:ref bean="adminInterceptor" /> -->
 		</interceptor>
 	</interceptors>
 	
@@ -20,9 +24,10 @@
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources location="/WEB-INF/views/admin/assets/" mapping="/admin/assets/**" />
-	<resources location="/WEB-INF/views/admin/css/" mapping="/admin/css/**" />
-	<resources location="/WEB-INF/views/admin/js/" mapping="/admin/js/**" />
+	<resources location="/WEB-INF/views/admin/resources/" mapping="/resources/**" />
+	<resources location="/WEB-INF/views/admin/resources/css/" mapping="/resources/css/**" />
+	<resources location="/WEB-INF/views/admin/resources/assets/" mapping="/resources/assets/**" />
+	<resources location="/WEB-INF/views/admin/resources/js/" mapping="/resources/js/**" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

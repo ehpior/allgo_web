@@ -7,8 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Page Title - SB Admin</title>
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+        <%@ include file="common/header.jsp" %>
     </head>
     <body class="bg-primary">
         <div id="layoutAuthentication">
@@ -20,10 +19,10 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form>
+                                        <form id="login_form" action="loginResult.do" onsubmit="javascript:login();">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" />
+                                                <input class="form-control py-4" id="inputEmailAddress" type="id" placeholder="Enter email address" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputPassword">Password</label>
@@ -36,13 +35,13 @@
                                                 </div>
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.jsp">Forgot Password?</a>
-                                                <a class="btn btn-primary" href="index.jsp">Login</a>
+                                                <a class="small" href="password.login">Forgot Password?</a>
+                                                <input type="submit" class="btn btn-primary" value="Login" />
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="register.jsp">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="signUp.login">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -65,8 +64,39 @@
                 </footer>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        
+        <%@ include file="common/footer.jsp" %>
+        <script type="text/javascript">
+			function login(){
+				var isSuccess = false;
+				
+				var id = $('#inputEmailAddress').val();
+				var password = $('#inputPassword').val();
+				
+				if( id == "" ) {
+					$('#inputEmailAddress').focus();
+					return isSuccess;
+				} else if( password == "" ) {
+					$('#inputPassword').focus();
+					return isSuccess;
+				} 
+				$.ajax({
+					async: false,
+					type: 'POST',
+					data: {"id":id,"password":password},
+					url: "/admin/login.do",
+					success: function(res) {
+						if(res == 1){
+							isSuccess = true;
+						}
+					},
+					error: function (request, status, error) {
+						alert("ErrorCode["+request.status+"]: "+error);
+					}
+				});
+				
+				return isSuccess;
+			}
+		</script>
     </body>
 </html>

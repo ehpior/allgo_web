@@ -1,4 +1,4 @@
-package com.allgo.test.dao;
+package com.allgo.web.dao;
 
 import org.springframework.stereotype.Repository;
 

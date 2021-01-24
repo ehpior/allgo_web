@@ -14,13 +14,13 @@
 	<!-- Mybatis 세션 팩토리 빈등록 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="typeAliasesPackage" value="com.allgo.test.dao" />
+		<property name="typeAliasesPackage" value="com.allgo.web.dao" />
 		<property name="mapperLocations" value="classpath:mybatis/*.xml" />
 	</bean>
 	
 	<!-- Mybatis Mapper Auto Scanning 빈 등록 -->
 	<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.allgo.test.dao"></property>
+		<property name="basePackage" value="com.allgo.web.dao"></property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
  

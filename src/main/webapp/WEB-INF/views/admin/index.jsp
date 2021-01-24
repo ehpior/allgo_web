@@ -6,10 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        <%@ include file="common/header.jsp" %>
         <title>Dashboard - SB Admin</title>
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -18,13 +16,14 @@
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <input id="nav_search" class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-primary" type="button" onclick="javascript:jniTest();"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </form>
             <!-- Navbar-->
+            <a class="navbar-brand" href="/">${login.id}</a>
             <ul class="navbar-nav ml-auto ml-md-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -32,7 +31,7 @@
                         <a class="dropdown-item" href="#">Settings</a>
                         <a class="dropdown-item" href="#">Activity Log</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="login.jsp">Logout</a>
+                        <a class="dropdown-item" href="logout.do">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -72,7 +71,7 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.jsp">Login</a>
+                                            <a class="nav-link" href="/login.allgo">Login</a>
                                             <a class="nav-link" href="register.jsp">Register</a>
                                             <a class="nav-link" href="password.jsp">Forgot Password</a>
                                         </nav>
@@ -676,16 +675,25 @@
                         </div>
                     </div>
                 </footer>
+                <%@ include file="common/footer.jsp" %>
+                <script type="text/javascript">
+                	function jniTest(){
+                		var nav_search = $("#nav_search").val();
+                		console.log(nav_search);
+                		$.ajax({
+        					async: false,
+        					type: 'POST',
+        					data: {"jniTest":nav_search},
+        					url: "/admin/jniTest.do",
+        					success: function(res) {
+        					},
+        					error: function (request, status, error) {
+        						alert("ErrorCode["+request.status+"]: "+error);
+        					}
+        				});
+                	}
+                </script>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
     </body>
 </html>

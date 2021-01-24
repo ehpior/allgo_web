@@ -1,4 +1,4 @@
-package com.allgo.test.interceptor;
+package com.allgo.web.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

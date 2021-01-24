@@ -1,9 +1,9 @@
-package com.allgo.test.service;
+package com.allgo.web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.allgo.test.dao.testDaoMapper;
+import com.allgo.web.dao.testDaoMapper;
 
 @Service
 public class testService {

@@ -7,8 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Page Title - SB Admin</title>
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+        <%@ include file="common/header.jsp" %>
     </head>
     <body class="bg-primary">
         <div id="layoutAuthentication">
@@ -27,13 +26,13 @@
                                                 <input class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" />
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="login.jsp">Return to login</a>
-                                                <a class="btn btn-primary" href="login.jsp">Reset Password</a>
+                                                <a class="small" href="admin.login">Return to login</a>
+                                                <a class="btn btn-primary" href="#">Reset Password</a>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="register.jsp">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="signUp.login">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -56,8 +55,6 @@
                 </footer>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <%@ include file="common/footer.jsp" %>
     </body>
 </html>
