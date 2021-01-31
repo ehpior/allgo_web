@@ -20,11 +20,11 @@ public class AdminInterceptor implements HandlerInterceptor{
 		System.out.println("MyInterCeptor - preHandle");
 		//response.sendRedirect("/admin/login.allgo");
 		
-		AdminDto adminDto = (AdminDto)SessionUtils.getObject(request, "login");
+		/*AdminDto adminDto = (AdminDto)SessionUtils.getObject(request, "login");
 		if(adminDto == null){
 			response.sendRedirect("/admin/admin.login");
 			return false;
-		}
+		}*/
 		return true;
 	}
 	

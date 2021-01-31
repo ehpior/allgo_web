@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.allgo.web.dto.AdminDto;
 import com.allgo.web.jni.TestJni;
+import com.allgo.web.packet.opt10081;
 import com.allgo.web.service.AdminService;
 import com.allgo.web.util.SessionUtils;
+import com.allgo.web.util.WebUtils;
 
 /**
  * Handles requests for the application home page.
@@ -33,7 +35,7 @@ public class AdminController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(HttpServletRequest request, HttpServletResponse response) {
+	public String allgo(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("/");
 		
 		return "redirect:/admin/main.allgo";
@@ -45,7 +47,49 @@ public class AdminController {
 		
 		Date date = new Date();
 		
+		return "admin/main";
+	}
+	
+	@RequestMapping(value = "/index.allgo", method = RequestMethod.GET)
+	public String index(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("/main.allgo");
+		
+		Date date = new Date();
+		
 		return "admin/index";
+	}
+	
+	@RequestMapping(value = "/tables.allgo", method = RequestMethod.GET)
+	public String tables(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("/tables.allgo");
+		
+		return "admin/tables";
+	}
+	
+	@RequestMapping(value = "/table.allgo")
+	public String table(HttpServletRequest request, HttpServletResponse response, String tr_code) {
+		logger.info("/table.allgo");
+		
+		opt10081 opt10081 = (opt10081)WebUtils.clientTest(tr_code);
+		
+		request.setAttribute("types", opt10081.types());
+		request.setAttribute("items", opt10081.items());
+		
+		return "admin/table";
+	}
+	
+	@RequestMapping(value = "/layout_sidenav_light.allgo", method = RequestMethod.GET)
+	public String layout_sidenav_light(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("/layout-sidenav-light.allgo");
+		
+		return "admin/layout-sidenav-light";
+	}
+	
+	@RequestMapping(value = "/layout_static.allgo", method = RequestMethod.GET)
+	public String layout_static(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("/layout_static.allgo");
+		
+		return "admin/layout-static";
 	}
 	
 	@RequestMapping(value = "/admin.login", method = RequestMethod.GET)
@@ -127,5 +171,15 @@ public class AdminController {
 		TestJni hk = new TestJni();
 		hk.printHello();
 		hk.printString(jniTest);
+	}
+	
+	@RequestMapping(value = "/jniTest2.do")
+	@ResponseBody
+	public String jniTest2(HttpServletRequest request, HttpServletResponse response, String jniTest) {
+		logger.info("jniTest2.do");
+		
+		opt10081 opt10081 = (opt10081)WebUtils.clientTest(jniTest);
+		
+		return opt10081.toString();
 	}
 }
