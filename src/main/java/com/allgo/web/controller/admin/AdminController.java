@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.allgo.web.dto.AdminDto;
+import com.allgo.web.jni.RealJNI;
 import com.allgo.web.jni.TestJni;
 import com.allgo.web.packet.opt10081;
 import com.allgo.web.service.AdminService;
@@ -46,6 +47,9 @@ public class AdminController {
 		logger.info("/main.allgo");
 		
 		Date date = new Date();
+		
+		RealJNI hk = new RealJNI();
+		hk.testcnt();
 		
 		return "admin/main";
 	}
