@@ -32,6 +32,8 @@ public class AdminController {
 	@Autowired
 	AdminService adminServ;
 	
+	private static RealJNI hk;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -48,8 +50,7 @@ public class AdminController {
 		
 		Date date = new Date();
 		
-		RealJNI hk = new RealJNI();
-		hk.testcnt();
+		hk = new RealJNI();
 		
 		return "admin/main";
 	}
@@ -59,6 +60,8 @@ public class AdminController {
 		logger.info("/main.allgo");
 		
 		Date date = new Date();
+		
+		hk.testcnt();
 		
 		return "admin/index";
 	}
