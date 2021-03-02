@@ -15,7 +15,7 @@ function numberWithCommas(x) {
 function jniTest(){
  	var nav_search = $("#nav_search").val();
   	console.log(nav_search);
-  	$("#tr_table").load("/admin/table.allgo",{tr_code:"005930"});
+  	$("#tr_table").load("/admin/table.allgo",{tr_code:nav_search});
   	/* $.ajax({
 		async: false,
 		type: 'POST',

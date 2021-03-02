@@ -32,7 +32,7 @@ public class AdminController {
 	@Autowired
 	AdminService adminServ;
 	
-	private static RealJNI hk;
+	private static RealJNI hk = null;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -50,7 +50,9 @@ public class AdminController {
 		
 		Date date = new Date();
 		
-		hk = new RealJNI();
+		if(hk==null){
+			hk = new RealJNI();
+		}
 		
 		return "admin/main";
 	}
@@ -184,6 +186,8 @@ public class AdminController {
 	@ResponseBody
 	public String jniTest2(HttpServletRequest request, HttpServletResponse response, String jniTest) {
 		logger.info("jniTest2.do");
+		
+		System.out.println(jniTest);
 		
 		opt10081 opt10081 = (opt10081)WebUtils.clientTest(jniTest);
 		

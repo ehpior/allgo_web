@@ -15,8 +15,8 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.jsp">Static Navigation</a>
-                        <a class="nav-link" href="layout-sidenav-light.jsp">Light Sidenav</a>
+                        <a class="nav-link" href="layout-static.allgo">Static Navigation</a>
+                        <a class="nav-link" href="layout-sidenav-light.allgo">Light Sidenav</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -51,11 +51,11 @@
                     </nav>
                 </div>
                 <div class="sb-sidenav-menu-heading">Addons</div>
-                <a class="nav-link" href="charts.jsp">
+                <a class="nav-link" href="charts.allgo">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Charts
                 </a>
-                <a class="nav-link" href="tables.jsp">
+                <a class="nav-link" href="tables.allgo">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Tables
                 </a>

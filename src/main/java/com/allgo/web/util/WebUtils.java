@@ -16,7 +16,7 @@ public class WebUtils {
 		// 소켓을 선언한다.
 		try (Socket client = new Socket()) {
 			// 소켓에 접속하기 위한 접속 정보를 선언한다.
-			InetSocketAddress ipep = new InetSocketAddress("127.0.0.1", 9999);
+			InetSocketAddress ipep = new InetSocketAddress("10.211.55.3", 9999);
 			// 소켓 접속!
 			client.connect(ipep);
 			// 소켓이 접속이 완료되면 inputstream과 outputstream을 받는다.
