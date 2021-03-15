@@ -2,6 +2,7 @@ package com.allgo.web.controller.admin;
 
 import java.util.Date;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -32,11 +33,43 @@ public class AdminController {
 	@Autowired
 	AdminService adminServ;
 	
-	private static RealJNI hk = null;
+	public static RealJNI realJNI;
+	
+	@PostConstruct
+	public void initialize(){
+		realJNI = new RealJNI();
+	}
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	
+	@RequestMapping(value = "/update.jni", method = RequestMethod.GET)
+	public String updateJNI(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("/update.jni");
+		
+		realJNI.update();
+		
+		return "redirect:/admin/main.allgo";
+	}
+	
+	@RequestMapping(value = "/get.jni", method = RequestMethod.GET)
+	public String getJNI(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("/get.jni");
+		
+		for(int i=0 ; i<3000 ; i++){
+			String code = realJNI.realCheg[i].getCode();
+			if(realJNI.realCheg[i].getPrice() > 0){
+				System.out.println(i);
+				System.out.println(code);
+				System.out.println(realJNI.realCheg[i].getPrice());
+				System.out.println("--------------------");
+			}
+		}
+		
+		return "redirect:/admin/main.allgo";
+	}
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String allgo(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("/");
@@ -50,10 +83,6 @@ public class AdminController {
 		
 		Date date = new Date();
 		
-		if(hk==null){
-			hk = new RealJNI();
-		}
-		
 		return "admin/main";
 	}
 	
@@ -62,8 +91,6 @@ public class AdminController {
 		logger.info("/main.allgo");
 		
 		Date date = new Date();
-		
-		hk.testcnt();
 		
 		return "admin/index";
 	}

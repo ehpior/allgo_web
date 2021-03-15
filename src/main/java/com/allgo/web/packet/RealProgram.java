@@ -2,6 +2,7 @@ package com.allgo.web.packet;
 
 public class RealProgram {
 	
+	private int index;
 	private String code;	// 종목코드[6]
 	private String time;   // 0. 체결시간[6]
 	private int price;   // 1. 현재가
@@ -20,6 +21,12 @@ public class RealProgram {
 	private int market;   // 14. 장운영구분
 	private int ticker;   // 15. 투자자별ticker
 	
+	public int getIndex() {
+		return index;
+	}
+	public void setIndex(int index) {
+		this.index = index;
+	}
 	public String getCode() {
 		return code;
 	}
