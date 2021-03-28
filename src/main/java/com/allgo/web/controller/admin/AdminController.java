@@ -33,12 +33,8 @@ public class AdminController {
 	@Autowired
 	AdminService adminServ;
 	
-	public static RealJNI realJNI;
-	
-	@PostConstruct
-	public void initialize(){
-		realJNI = new RealJNI();
-	}
+	@Autowired
+	RealJNI realJNI;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
