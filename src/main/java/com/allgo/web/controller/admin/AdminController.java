@@ -40,7 +40,7 @@ public class AdminController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
-	@RequestMapping(value = "/update.jni", method = RequestMethod.GET)
+	@RequestMapping(value = "/update.jni")
 	public String updateJNI(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("/update.jni");
 		
@@ -49,7 +49,7 @@ public class AdminController {
 		return "redirect:/admin/main.allgo";
 	}
 	
-	@RequestMapping(value = "/get.jni", method = RequestMethod.GET)
+	@RequestMapping(value = "/get.jni")
 	public String getJNI(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("/get.jni");
 		
@@ -62,6 +62,9 @@ public class AdminController {
 				System.out.println("--------------------");
 			}
 		}
+		
+		request.setAttribute("realCheg",realJNI.getRealCheg());
+		request.setAttribute("realProgram",realJNI.getRealProgram());
 		
 		return "redirect:/admin/main.allgo";
 	}
@@ -89,6 +92,23 @@ public class AdminController {
 		Date date = new Date();
 		
 		return "admin/index";
+	}
+	
+	@RequestMapping(value = "/tables_real.allgo", method = RequestMethod.GET)
+	public String tables_real(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("/tables_real.allgo");
+		
+		return "admin/tables_real";
+	}
+	
+	@RequestMapping(value = "/table_real.allgo", method = RequestMethod.GET)
+	public String table_real(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("/table_real.allgo");
+		
+		request.setAttribute("realChegList", realJNI.getRealCheg());
+		request.setAttribute("realProgramList", realJNI.getRealProgram());
+		
+		return "admin/table_real";
 	}
 	
 	@RequestMapping(value = "/tables.allgo", method = RequestMethod.GET)
