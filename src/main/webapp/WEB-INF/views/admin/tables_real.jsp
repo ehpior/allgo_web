@@ -35,29 +35,29 @@
                                 DataTable Example
                             </div>
                             <div class="card-body">
-			                    <div class="row">
-			                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-			                            <select class="form-control search-slt" id="exampleFormControlSelect1">
-			                                <option>Select Vehicle</option>
-			                                <option>Example one</option>
-			                                <option>Example one</option>
-			                                <option>Example one</option>
-			                                <option>Example one</option>
-			                                <option>Example one</option>
-			                                <option>Example one</option>
-			                            </select>
-			                        </div>
-			                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-			                            <input type="text" class="form-control search-slt" placeholder="Enter Pickup City">
-			                        </div>
-			                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-			                            <input type="text" class="form-control search-slt" placeholder="Enter Drop City">
-			                        </div>
-			                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-			                            <button type="button" class="btn btn-danger wrn-btn">Search</button>
-			                        </div>
-			                    </div>
-                                <div class="table-responsive" id="tr_table">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Position</th>
+                                                <th>Office</th>
+                                                <th>Age</th>
+                                                <th>Start date</th>
+                                                <th>Salary</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
