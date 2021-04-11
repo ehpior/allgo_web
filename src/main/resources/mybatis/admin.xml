@@ -9,4 +9,10 @@
 		where id = #{id}
 			and password = #{password}
 	</select>
+	
+	<select id="stockListInit" resultType="com.allgo.web.dto.StockInfo">
+		select *
+		from STOCK_LIST
+	</select>
+	
 </mapper>

@@ -2,7 +2,6 @@ package com.allgo.web.controller.admin;
 
 import java.util.Date;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.allgo.web.dto.AdminDto;
+import com.allgo.web.dto.StockList;
 import com.allgo.web.jni.RealJNI;
 import com.allgo.web.jni.TestJni;
 import com.allgo.web.packet.opt10081;
+import com.allgo.web.redis.RedisService;
 import com.allgo.web.service.AdminService;
 import com.allgo.web.util.SessionUtils;
 import com.allgo.web.util.WebUtils;
@@ -34,11 +35,25 @@ public class AdminController {
 	AdminService adminServ;
 	
 	@Autowired
+	StockList stockList;
+	
+	@Autowired
 	RealJNI realJNI;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	
+	@Autowired
+    private RedisService redisService;
+	
+	
+	@RequestMapping(value = "/test.redis")
+	public String testRedis(HttpServletRequest request, HttpServletResponse response) {
+		redisService.checkAll();
+		
+		return "redirect:/admin/main.allgo";
+	}
 	
 	@RequestMapping(value = "/update.jni")
 	public String updateJNI(HttpServletRequest request, HttpServletResponse response) {

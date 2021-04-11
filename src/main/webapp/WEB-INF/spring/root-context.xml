@@ -36,14 +36,48 @@
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
-	<!-- redis -->
-	<bean id="jedisConnectionFactory"
-		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" p:usePool="true"  p:hostName="127.0.0.1" p:port="6379" />
-
-	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" p:connectionFactory-ref="jedisConnectionFactory" />
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig" />
 	
+	<!-- redis -->
+	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"> 
+		<property name="usePool" value="true" />
+		<property name="hostName" value="1.240.167.231" />
+		<property name="port" value="6379" />
+    	<property name="poolConfig" ref="jedisPoolConfig" />
+    	<property name="password" value="wjdgusrl34" />
+    </bean>
+    
+    <!-- redis 템플릿 설정 -->
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+	    <!-- 위에서 생성한 jedisConnectionFactory 를 꽂아줌 -->
+	    <property name="connectionFactory" ref="jedisConnectionFactory" />
+	    <!-- 키는 string, value 는 Object 로 설정 -->
+	    <!-- keySerializer, hashKeySerializer 는 StringRedisSerializer 로 잡고 -->
+	    <!-- valueSerializer, hashValueSerializer 는 GenericJackson2JsonRedisSerializer -->
+	    <!-- 로 잡은후 생성자로 Object 객체를 넣어주었다. -->
+	    <property name="keySerializer">
+	        <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+	    </property>
+	    <property name="valueSerializer">
+	        <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+	    </property>
+	    <!-- <property name="valueSerializer">
+	        <bean class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer">
+	            <constructor-arg value="java.lang.Object" />
+	        </bean>
+	    </property> -->
+	    <property name="hashKeySerializer">
+	        <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+	    </property>
+	    <property name="hashValueSerializer">
+	        <bean class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer">
+	            <constructor-arg value="java.lang.Object" />
+	        </bean>
+	    </property>
+	</bean>
+    
 	<!-- declare Redis Cache Manager -->
-	<bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager" c:redis-operations-ref='redisTemplate'>
+	<!-- <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager" c:redis-operations-ref='redisTemplate'>
         <property name="expires">
             <map>
                 <entry key="sessionData" value="7200"></entry>
@@ -51,8 +85,7 @@
                 <entry key="referenceData" value="86400"></entry>
             </map>
         </property>
-    </bean>
-    
+    </bean> -->
 
 	<mvc:annotation-driven>
 	   <mvc:message-converters>
@@ -60,6 +93,14 @@
 	   </mvc:message-converters>
 	</mvc:annotation-driven>
 	
+	<!-- <bean id="workExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+	    <property name="corePoolSize" value="10" />
+	    <property name="maxPoolSize" value="20" />
+	    <property name="queueCapacity" value="10" />
+		<property name="waitForTasksToCompleteOnShutdown" value="true" />
+	</bean> -->
+	
+	<bean id="stockList" class="com.allgo.web.dto.StockList" />
 	
 	<bean id="realJNI" class="com.allgo.web.jni.RealJNI"></bean>
 	
