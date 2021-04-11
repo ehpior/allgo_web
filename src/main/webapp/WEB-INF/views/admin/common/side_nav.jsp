@@ -55,13 +55,9 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Charts
                 </a>
-                <a class="nav-link" href="tables_real.allgo">
+                <a class="nav-link" href="stocks.allgo">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                    Tables_real
-                </a>
-                <a class="nav-link" href="tables.allgo">
-                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                    Tables
+                    stocks
                 </a>
             </div>
         </div>

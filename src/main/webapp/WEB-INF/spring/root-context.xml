@@ -32,7 +32,7 @@
 	</bean>
  
 	<!-- sqlSession -->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
@@ -101,8 +101,6 @@
 	</bean> -->
 	
 	<bean id="stockList" class="com.allgo.web.dto.StockList" />
-	
-	<bean id="realJNI" class="com.allgo.web.jni.RealJNI"></bean>
 	
     <context:component-scan base-package="com.allgo.web.redis" />
 	<context:component-scan base-package="com.allgo.web.init" />

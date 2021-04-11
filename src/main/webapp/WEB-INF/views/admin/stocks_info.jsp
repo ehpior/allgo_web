@@ -5,17 +5,20 @@
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
     <thead>
         <tr>
-        	<c:forEach var="type" items="${realChegList}" >
+        	<c:forEach var="type" items="${types}" >
             <th>${type}</th>
             </c:forEach>
         </tr>
     </thead>
  	<tbody>
- 		<tr>
- 			<c:forEach var="item" items="${items}" >
- 				<td>${item}</td>
-  			</c:forEach>
- 		</tr>
+ 		<c:forEach var="item" items="${items}" >
+ 			<tr>
+ 				<td>${item.code}</td>
+ 				<td>${item.kor_name}</td>
+ 				<td>${item.market}</td>
+ 				<td>${item.price}</td>
+	 		</tr>
+  		</c:forEach>
  	</tbody>
 </table>
 </html>

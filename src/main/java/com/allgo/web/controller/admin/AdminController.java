@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.allgo.web.dto.AdminDto;
 import com.allgo.web.dto.StockList;
-import com.allgo.web.jni.RealJNI;
-import com.allgo.web.jni.TestJni;
 import com.allgo.web.packet.opt10081;
 import com.allgo.web.redis.RedisService;
 import com.allgo.web.service.AdminService;
@@ -37,9 +35,6 @@ public class AdminController {
 	@Autowired
 	StockList stockList;
 	
-	@Autowired
-	RealJNI realJNI;
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -51,35 +46,6 @@ public class AdminController {
 	@RequestMapping(value = "/test.redis")
 	public String testRedis(HttpServletRequest request, HttpServletResponse response) {
 		redisService.checkAll();
-		
-		return "redirect:/admin/main.allgo";
-	}
-	
-	@RequestMapping(value = "/update.jni")
-	public String updateJNI(HttpServletRequest request, HttpServletResponse response) {
-		logger.info("/update.jni");
-		
-		realJNI.update();
-		
-		return "redirect:/admin/main.allgo";
-	}
-	
-	@RequestMapping(value = "/get.jni")
-	public String getJNI(HttpServletRequest request, HttpServletResponse response) {
-		logger.info("/get.jni");
-		
-		for(int i=0 ; i<3000 ; i++){
-			String code = realJNI.realCheg[i].getCode();
-			if(realJNI.realCheg[i].getPrice() > 0){
-				System.out.println(i);
-				System.out.println(code);
-				System.out.println(realJNI.realCheg[i].getPrice());
-				System.out.println("--------------------");
-			}
-		}
-		
-		request.setAttribute("realCheg",realJNI.getRealCheg());
-		request.setAttribute("realProgram",realJNI.getRealProgram());
 		
 		return "redirect:/admin/main.allgo";
 	}
@@ -109,21 +75,21 @@ public class AdminController {
 		return "admin/index";
 	}
 	
-	@RequestMapping(value = "/tables_real.allgo", method = RequestMethod.GET)
+	@RequestMapping(value = "/stocks.allgo", method = RequestMethod.GET)
 	public String tables_real(HttpServletRequest request, HttpServletResponse response) {
-		logger.info("/tables_real.allgo");
+		logger.info("/stocks.allgo");
 		
-		return "admin/tables_real";
+		return "admin/stocks";
 	}
 	
-	@RequestMapping(value = "/table_real.allgo", method = RequestMethod.GET)
+	@RequestMapping(value = "/stocks_info.allgo", method = RequestMethod.GET)
 	public String table_real(HttpServletRequest request, HttpServletResponse response) {
-		logger.info("/table_real.allgo");
+		logger.info("/stocks_info.allgo");
 		
-		request.setAttribute("realChegList", realJNI.getRealCheg());
-		request.setAttribute("realProgramList", realJNI.getRealProgram());
+		request.setAttribute("types", stockList.types());
+		request.setAttribute("items", stockList.items());
 		
-		return "admin/table_real";
+		return "admin/stocks_info";
 	}
 	
 	@RequestMapping(value = "/tables.allgo", method = RequestMethod.GET)
@@ -235,9 +201,6 @@ public class AdminController {
 	public void jniTest(HttpServletRequest request, HttpServletResponse response, String jniTest) {
 		logger.info("jniTest.do");
 		
-		TestJni hk = new TestJni();
-		hk.printHello();
-		hk.printString(jniTest);
 	}
 	
 	@RequestMapping(value = "/jniTest2.do")

@@ -10,6 +10,13 @@
         <%@ include file="common/header.jsp" %>
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     </head>
+    <script type="text/javascript">
+    	window.onload = function(){	
+    	/*$(document).ready(function() {
+			$("#tr_table").load("/admin/stocks_info.allgo",{tr_code:nav_search}); */
+			$("#tr_table").load("/admin/stocks_info.allgo");		
+		};
+	</script>
     <body class="sb-nav-fixed">
         <%@ include file="common/top_nav.jsp" %>
         <div id="layoutSidenav">
@@ -35,29 +42,23 @@
                                 DataTable Example
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+			                    <div class="row">
+			                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+			                            <select class="form-control search-slt" id="exampleFormControlSelect1">
+			                                <option>Select Vehicle</option>
+			                            </select>
+			                        </div>
+			                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+			                            <input type="text" class="form-control search-slt" placeholder="Enter Pickup City">
+			                        </div>
+			                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+			                            <input type="text" class="form-control search-slt" placeholder="Enter Drop City">
+			                        </div>
+			                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+			                            <button type="button" class="btn btn-danger wrn-btn">Search</button>
+			                        </div>
+			                    </div>
+                                <div class="table-responsive" id="tr_table">
                                 </div>
                             </div>
                         </div>
