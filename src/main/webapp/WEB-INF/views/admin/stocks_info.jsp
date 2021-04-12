@@ -11,8 +11,9 @@
         </tr>
     </thead>
  	<tbody>
- 		<c:forEach var="item" items="${items}" >
+ 		<c:forEach var="item" items="${items}" varStatus="status">
  			<tr>
+ 				<td>${status.index}</td>
  				<td>${item.code}</td>
  				<td>${item.kor_name}</td>
  				<td>${item.market}</td>

@@ -13,6 +13,7 @@ public class StockList {
 	public ArrayList<String> types(){
 		ArrayList<String> output = new ArrayList<>();
 	
+		output.add("No");
 		output.add("종목코드");
 		output.add("종목명");
 		output.add("장구분");
@@ -22,11 +23,11 @@ public class StockList {
 	}
 	
 	public List<StockInfo> items(){
-		List<StockInfo> output = stocks_list.subList(0, 5);
+		/*List<StockInfo> output = stocks_list.subList(0, 5);
 		
 		output.add(stocks.get("153270"));
-		
-		return output;
+		*/
+		return stocks_list;
 	}
 
 	public int getCnt() {

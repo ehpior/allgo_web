@@ -66,15 +66,6 @@ public class AdminController {
 		return "admin/main";
 	}
 	
-	@RequestMapping(value = "/index.allgo", method = RequestMethod.GET)
-	public String index(HttpServletRequest request, HttpServletResponse response) {
-		logger.info("/main.allgo");
-		
-		Date date = new Date();
-		
-		return "admin/index";
-	}
-	
 	@RequestMapping(value = "/stocks.allgo", method = RequestMethod.GET)
 	public String tables_real(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("/stocks.allgo");
@@ -92,47 +83,9 @@ public class AdminController {
 		return "admin/stocks_info";
 	}
 	
-	@RequestMapping(value = "/tables.allgo", method = RequestMethod.GET)
-	public String tables(HttpServletRequest request, HttpServletResponse response) {
-		logger.info("/tables.allgo");
-		
-		return "admin/tables";
-	}
-	
-	@RequestMapping(value = "/table.allgo")
-	public String table(HttpServletRequest request, HttpServletResponse response, String tr_code) {
-		logger.info("/table.allgo");
-		
-		opt10081 opt10081 = (opt10081)WebUtils.clientTest(tr_code);
-		
-		request.setAttribute("types", opt10081.types());
-		request.setAttribute("items", opt10081.items());
-		
-		return "admin/table";
-	}
-	
-	@RequestMapping(value = "/layout_sidenav_light.allgo", method = RequestMethod.GET)
-	public String layout_sidenav_light(HttpServletRequest request, HttpServletResponse response) {
-		logger.info("/layout-sidenav-light.allgo");
-		
-		return "admin/layout-sidenav-light";
-	}
-	
-	@RequestMapping(value = "/layout_static.allgo", method = RequestMethod.GET)
-	public String layout_static(HttpServletRequest request, HttpServletResponse response) {
-		logger.info("/layout_static.allgo");
-		
-		return "admin/layout-static";
-	}
-	
 	@RequestMapping(value = "/admin.login", method = RequestMethod.GET)
 	public String loginPage(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("admin.login");
-		
-		/*TestJni hk = new TestJni();
-		hk.printHello();
-		hk.printString("testhk");
-		System.out.println("123");*/
 		
 		AdminDto adminDto = (AdminDto) SessionUtils.getObject(request, "login");
 		
@@ -194,13 +147,6 @@ public class AdminController {
 		SessionUtils.removeObject(request, "login");
 		
 		return "redirect:/admin/admin.login";
-	}
-	
-	@RequestMapping(value = "/jniTest.do")
-	@ResponseBody
-	public void jniTest(HttpServletRequest request, HttpServletResponse response, String jniTest) {
-		logger.info("jniTest.do");
-		
 	}
 	
 	@RequestMapping(value = "/jniTest2.do")

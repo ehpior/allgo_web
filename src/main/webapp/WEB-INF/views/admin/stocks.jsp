@@ -30,34 +30,11 @@
                             <li class="breadcrumb-item active">Tables</li>
                         </ol>
                         <div class="card mb-4">
-                            <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
-                            </div>
-                        </div>
-                        <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
                                 DataTable Example
                             </div>
                             <div class="card-body">
-			                    <div class="row">
-			                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-			                            <select class="form-control search-slt" id="exampleFormControlSelect1">
-			                                <option>Select Vehicle</option>
-			                            </select>
-			                        </div>
-			                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-			                            <input type="text" class="form-control search-slt" placeholder="Enter Pickup City">
-			                        </div>
-			                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-			                            <input type="text" class="form-control search-slt" placeholder="Enter Drop City">
-			                        </div>
-			                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-			                            <button type="button" class="btn btn-danger wrn-btn">Search</button>
-			                        </div>
-			                    </div>
                                 <div class="table-responsive" id="tr_table">
                                 </div>
                             </div>
