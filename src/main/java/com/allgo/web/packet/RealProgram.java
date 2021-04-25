@@ -1,25 +1,52 @@
 package com.allgo.web.packet;
 
+import java.util.ArrayList;
+
 public class RealProgram {
 	
 	private int index;
-	private String code;	// Á¾¸ñÄÚµå[6]
-	private String time;   // 0. Ã¼°á½Ã°£[6]
-	private int price;   // 1. ÇöÀç°¡
-	private String plus_minus;   // 2. ÀüÀÏ´ëºñ±âÈ£[1]
-	private int change_price;   // 3. ÀüÀÏ´ëºñ
-	private int increase_rate;   // 4. µî¶ôÀ²
-	private int cul_volume;   // 5. ´©Àû°Å·¡·®
-	private int sell_volume;   // 6. ¸Åµµ¼ö·®
-	private int sell_amount;   // 7. ¸Åµµ±İ¾×
-	private int buy_volume;   // 8. ¸Å¼ö¼ö·®
-	private int buy_amount;   // 9. ¸Å¼ö±İ¾×
-	private int net_buy_volume;   // 10. ¼ø¸Å¼ö¼ö·®
-	private int net_buy_amount;   // 11. ¼ø¸Å¼ö±İ¾×
-	private int a1;   // 12. ¼ø¸Å¼ö±İ¾×Áõ°¨
-	private int a2;   // 13. Àå½ÃÀÛ¿¹»óÀÜ¿©½Ã°£
-	private int market;   // 14. Àå¿î¿µ±¸ºĞ
-	private int ticker;   // 15. ÅõÀÚÀÚº°ticker
+	private String code;	// ì¢…ëª©ì½”ë“œ[6]
+	private String time;   // 0. ì²´ê²°ì‹œê°„[6]
+	private int price;   // 1. í˜„ì¬ê°€
+	private String plus_minus;   // 2. ì „ì¼ëŒ€ë¹„ê¸°í˜¸[1]
+	private int change_price;   // 3. ì „ì¼ëŒ€ë¹„
+	private int increase_rate;   // 4. ë“±ë½ìœ¨
+	private int cul_volume;   // 5. ëˆ„ì ê±°ë˜ëŸ‰
+	private int sell_volume;   // 6. ë§¤ë„ìˆ˜ëŸ‰
+	private int sell_amount;   // 7. ë§¤ë„ê¸ˆì•¡
+	private int buy_volume;   // 8. ë§¤ìˆ˜ìˆ˜ëŸ‰
+	private int buy_amount;   // 9. ë§¤ìˆ˜ê¸ˆì•¡
+	private int net_buy_volume;   // 10. ìˆœë§¤ìˆ˜ìˆ˜ëŸ‰
+	private int net_buy_amount;   // 11. ìˆœë§¤ìˆ˜ê¸ˆì•¡
+	private int a1;   // 12. ìˆœë§¤ìˆ˜ê¸ˆì•¡ì¦ê°
+	private int a2;   // 13. ì¥ì‹œì‘ì˜ˆìƒì”ì—¬ì‹œê°„
+	private int market;   // 14. ì¥ìš´ì˜êµ¬ë¶„
+	private int ticker;   // 15. íˆ¬ììë³„ticker
+	
+	public static ArrayList<String> types(){
+		ArrayList<String> output = new ArrayList<>();
+		
+		output.add("No");
+		output.add("ì¢…ëª©ì½”ë“œ");
+		output.add("ì²´ê²°ì‹œê°„");
+		output.add("í˜„ì¬ê°€");
+		output.add("ì „ì¼ëŒ€ë¹„ê¸°í˜¸");
+		output.add("ì „ì¼ëŒ€ë¹„");
+		output.add("ë“±ë½ìœ¨");
+		output.add("ëˆ„ì ê±°ë˜ëŸ‰");
+		output.add("ë§¤ë„ìˆ˜ëŸ‰");
+		output.add("ë§¤ë„ê¸ˆì•¡");
+		output.add("ë§¤ìˆ˜ìˆ˜ëŸ‰");
+		output.add("ë§¤ìˆ˜ê¸ˆì•¡");
+		output.add("ìˆœë§¤ìˆ˜ìˆ˜ëŸ‰");
+		output.add("ìˆœë§¤ìˆ˜ê¸ˆì•¡");
+		output.add("ìˆœë§¤ìˆ˜ê¸ˆì•¡ì¦ê°");
+		output.add("ì¥ì‹œì‘ì˜ˆìƒì”ì—¬ì‹œê°„");
+		output.add("ì¥ìš´ì˜êµ¬ë¶„");
+		output.add("íˆ¬ììë³„ticker");
+		
+		return output;
+	}
 	
 	public int getIndex() {
 		return index;

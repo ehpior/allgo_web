@@ -47,19 +47,22 @@ public class RedisUpdateThread{
 	@Scheduled(fixedDelay = 5000, initialDelay = 3000) 
 	private void scheduleTest(){ 
 		Set<String> keys = redisTemplate.keys("stock:*");
-		
+			
 		Iterator<String> iter = keys.iterator();
-		try{
-			while(iter.hasNext()){
+		while(iter.hasNext()){
+			try{
 				String key = iter.next().toString();
 				
 				String code = key.split(":")[1];
 				float price = Float.parseFloat(valueOps.get(key));
 				
-				stockList.getStocks().get(code).setPrice(price);
+				if(stockList.getStocks().containsKey(code)){
+					stockList.getStocks().get(code).setPrice(price);
+				}
+			} catch(Exception e){
+				System.out.println("update");
+				System.out.println(e);
 			}
-		} catch(Exception e){
-			System.out.println(e);
 		}
 	}
 	

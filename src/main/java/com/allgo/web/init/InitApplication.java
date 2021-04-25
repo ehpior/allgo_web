@@ -41,6 +41,8 @@ public class InitApplication {
 		}
 		stockList.setStocks(stocks);
 		
+		System.out.println(stockInfo.size());
+		
 		/*RedisUpdateThread thread = new RedisUpdateThread();
 		workExecutor.execute(thread);*/
 	}

@@ -22,12 +22,11 @@ public class StockList {
 		return output;
 	}
 	
-	public List<StockInfo> items(){
-		/*List<StockInfo> output = stocks_list.subList(0, 5);
+	public List<StockInfo> items(int startIndex, int endIndex){
 		
-		output.add(stocks.get("153270"));
-		*/
-		return stocks_list;
+		List<StockInfo> output = stocks_list.subList(startIndex, endIndex);
+		
+		return output;
 	}
 
 	public int getCnt() {

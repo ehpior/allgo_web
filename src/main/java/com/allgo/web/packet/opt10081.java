@@ -5,33 +5,33 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class opt10081 {
-	private String code;	// 0.Á¾¸ñÄÚµå[6]
-	private int price;		// 1.ÇöÀç°¡
-	private int volume;		// 2.°Å·¡·®
-	private int amount;		// 3.°Å·¡´ë±İ
-	private String date;	// 4.ÀÏÀÚ[8]
-	private int open;		// 5.½Ã°¡
-	private int high;		// 6.°í°¡
-	private int low;		// 7.Àú°¡
-	private int a1;			// ¼öÁ¤ÁÖ°¡±¸ºĞ
-	private int a2;			// ¼öÁ¤ºñÀ²
-	private int a3;			// ´ë¾÷Á¾±¸ºĞ
-	private int a4;			// ¼Ò¾÷Á¾±¸ºĞ
-	private int a5;			// Á¾¸ñÁ¤º¸
-	private int a6;			// ¼öÁ¤ÁÖ°¡ÀÌº¥Æ®
-	private int a7;			// ÀüÀÏÁ¾°¡
+	private String code;	// 0. ì¢…ëª©ì½”ë“œ
+	private int price;		// 1. í˜„ì¬ê°€ 
+	private int volume;		// 2. ê±°ë˜ëŸ‰
+	private int amount;		// 3. ê±°ë˜ëŒ€ê¸ˆ
+	private String date;	// 4. ì¼ì
+	private int open;		// 5. ì‹œê°€
+	private int high;		// 6. ê³ ê°€
+	private int low;		// 7. ì €ê°€
+	private int a1;			// ìˆ˜ì •ì£¼ê°€êµ¬ë¶„
+	private int a2;			// ìˆ˜ì •ë¹„ìœ¨
+	private int a3;			// ëŒ€ì—…ì¢…êµ¬ë¶„
+	private int a4;			// ì†Œì—…ì¢…êµ¬ë¶„
+	private int a5;			// ì¢…ëª©ì •ë³´
+	private int a6;			// ìˆ˜ì •ì£¼ê°€ì´ë²¤íŠ¸
+	private int a7;			// ì „ì¼ì¢…ê°€
 	
 	public String[] types(){
 		String[] output = new String[8];
 		
-		output[0] = "Á¾¸ñÄÚµå";
-		output[1] = "ÇöÀç°¡";
-		output[2] = "°Å·¡·®";
-		output[3] = "°Å·¡´ë±İ";
-		output[4] = "ÀÏÀÚ";
-		output[5] = "½Ã°¡";
-		output[6] = "°í°¡";
-		output[7] = "Àú°¡";
+		output[0] = "ì¢…ëª©ì½”ë“œ";
+		output[1] = "í˜„ì¬ê°€";
+		output[2] = "ê±°ë˜ëŸ‰";
+		output[3] = "ê±°ë˜ëŒ€ê¸ˆ";
+		output[4] = "ì¼ì";
+		output[5] = "ì‹œê°€";
+		output[6] = "ê³ ê°€";
+		output[7] = "ì €ê°€";
 		
 		return output;
 	}

@@ -87,12 +87,6 @@
         </property>
     </bean> -->
 
-	<mvc:annotation-driven>
-	   <mvc:message-converters>
-	       <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
-	   </mvc:message-converters>
-	</mvc:annotation-driven>
-	
 	<!-- <bean id="workExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
 	    <property name="corePoolSize" value="10" />
 	    <property name="maxPoolSize" value="20" />

@@ -14,7 +14,17 @@
 						<i class="fas fa-table"></i>
 					</div> Stocks
 				</a>
-				<a class="nav-link" href="/admin/allgo_score.allgo?type=1">
+				<a class="nav-link" href="/admin/stocks_cheg.allgo">
+					<div class="sb-nav-link-icon">
+						<i class="fas fa-table"></i>
+					</div> 체결데이터
+				</a>
+				<a class="nav-link" href="/admin/stocks_program.allgo">
+					<div class="sb-nav-link-icon">
+						<i class="fas fa-table"></i>
+					</div> 프로그램데이터
+				</a>
+				<a class="nav-link" href="/admin/allgo.allgo">
 					<div class="sb-nav-link-icon">
 						<i class="fas fa-table"></i>
 					</div> Allgo#1

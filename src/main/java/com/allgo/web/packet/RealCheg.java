@@ -1,33 +1,71 @@
 package com.allgo.web.packet;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.allgo.web.dto.StockInfo;
+
 public class RealCheg {
 	
 	private int index;
-	private String code;	// Á¾¸ñÄÚµå[6]
-	private String time;   // 0. Ã¼°á½Ã°£[6]
-	private int price;   // 1. ÇöÀç°¡
-	private int change_price;   // 2. ÀüÀÏ´ëºñ
-	private int increase_rate;   // 3. µî¶ôÀ²
-	private int sell_1;      // 4. ÃÖ¿ì¼± ¸ÅµµÈ£°¡
-	private int buy_1;      // 5. ÃÖ¿ì¼± ¸Å¼öÈ£°¡
-	private int volume;      // 6. °Å·¡·®
-	private int cul_volume;   // 7. ´©Àû°Å·¡·®
-	private int cul_amount;   // 8. ´©Àû°Å·¡´ë±İ
-	private int open;      // 9. ½Ã°¡
-	private int high;      // 10. °í°¡
-	private int low;      // 11. Àú°¡
-	private String plus_minus;   // 12. ÀüÀÏ´ëºñ±âÈ£[1]
-	private int a1;      // 13. ÀüÀÏ°Å·¡·®´ëºñ
-	private int a2;      // 14. °Å·¡´ë±İÁõ°¨
-	private int a3;      // 15. ÀüÀÏ°Å·¡·®´ëºñ(ºñÀ²)
-	private int turn_over;   // 16. °Å·¡È¸ÀüÀ²
-	private int a4;      // 17. °Å·¡ºñ¿ë
-	private int volume_power;   // 18. Ã¼°á°­µµ
-	private int capitalization;   // 19. ½Ã°¡ÃÑ¾×(¾ï)
-	private int market;      // 20. Àå±¸ºĞ
-	private int a5;      // 21. KOÁ¢±Ùµµ
-	private int high_time;   // 22. »óÇÑ°¡¹ß»ı½Ã°£
-	private int low_time;      // 23. ÇÏÇÑ°¡¹ß»ı±â°£
+	private String code;	// ì¢…ëª©ì½”ë“œ[6]
+	private String time;   // 0. ì²´ê²°ì‹œê°„[6]
+	private int price;   // 1. í˜„ì¬ê°€
+	private int change_price;   // 2. ì „ì¼ëŒ€ë¹„
+	private int increase_rate;   // 3. ë“±ë½ìœ¨
+	private int sell_1;      // 4. ìµœìš°ì„  ë§¤ë„í˜¸ê°€
+	private int buy_1;      // 5. ìµœìš°ì„  ë§¤ìˆ˜í˜¸ê°€
+	private int volume;      // 6. ê±°ë˜ëŸ‰
+	private int cul_volume;   // 7. ëˆ„ì ê±°ë˜ëŸ‰
+	private int cul_amount;   // 8. ëˆ„ì ê±°ë˜ëŒ€ê¸ˆ
+	private int open;      // 9. ì‹œê°€
+	private int high;      // 10. ê³ ê°€
+	private int low;      // 11. ì €ê°€
+	private String plus_minus;   // 12. ì „ì¼ëŒ€ë¹„ê¸°í˜¸ 
+	private int a1;      // 13. ì „ì¼ê±°ë˜ëŸ‰ëŒ€ë¹„
+	private int a2;      // 14. ê±°ë˜ëŒ€ê¸ˆì¦ê°
+	private int a3;      // 15. ì „ì¼ê±°ë˜ëŸ‰ëŒ€ë¹„(ë¹„ìœ¨)
+	private int turn_over;   // 16. ê±°ë˜íšŒì „ìœ¨
+	private int a4;      // 17. ê±°ë˜ë¹„ìœ¨
+	private int volume_power;   // 18. ì²´ê²°ê°•ë„
+	private int capitalization;   // 19. ì‹œê°€ì´ì•¡(ì–µ)
+	private int market;      // 20. ì¥êµ¬ë¶„
+	private int a5;      // 21. KOì ‘ê·¼ë„
+	private int high_time;   // 22. ìƒí•œê°€ë°œìƒì‹œê°„
+	private int low_time;      // 23. í•˜í•œê°€ë°œìƒì‹œê°„
+	
+	public static ArrayList<String> types(){
+		ArrayList<String> output = new ArrayList<>();
+	
+		output.add("No");
+		output.add("ì¢…ëª©ì½”ë“œ");
+		output.add("ì²´ê²°ì‹œê°„");
+		output.add("í˜„ì¬ê°€");
+		output.add("ì „ì¼ëŒ€ë¹„");
+		output.add("ë“±ë½ìœ¨");
+		output.add("ìµœìš°ì„  ë§¤ë„í˜¸ê°€");
+		output.add("ìµœìš°ì„  ë§¤ìˆ˜í˜¸ê°€");
+		output.add("ê±°ë˜ëŸ‰");
+		output.add("ëˆ„ì ê±°ë˜ëŸ‰");
+		output.add("ëˆ„ì ê±°ë˜ëŒ€ê¸ˆ");
+		output.add("ì‹œê°€");
+		output.add("ê³ ê°€");
+		output.add("ì €ê°€");
+		output.add("ì „ì¼ëŒ€ë¹„ê¸°í˜¸");
+		output.add("ì „ì¼ê±°ë˜ëŸ‰ëŒ€ë¹„");
+		output.add("ê±°ë˜ëŒ€ê¸ˆì¦ê°");
+		output.add("ì „ì¼ê±°ë˜ëŸ‰ëŒ€ë¹„(ë¹„ìœ¨)");
+		output.add("ê±°ë˜íšŒì „ìœ¨");
+		output.add("ê±°ë˜ë¹„ìœ¨");
+		output.add("ì²´ê²°ê°•ë„");
+		output.add("ì‹œê°€ì´ì•¡(ì–µ)");
+		output.add("ì¥êµ¬ë¶„");
+		output.add("KOì ‘ê·¼ë„");
+		output.add("ìƒí•œê°€ë°œìƒì‹œê°„");
+		output.add("í•˜í•œê°€ë°œìƒì‹œê°„");
+		
+		return output;
+	}
 	
 	public int getIndex() {
 		return index;

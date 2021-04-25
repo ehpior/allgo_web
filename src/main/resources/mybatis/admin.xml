@@ -11,8 +11,30 @@
 	</select>
 	
 	<select id="stockListInit" resultType="com.allgo.web.dto.StockInfo">
-		select *
-		from STOCK_LIST
+		SELECT a.*, b.price as price
+		FROM STOCK_LIST a
+			left JOIN STOCK_CHEG b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM STOCK_CHEG)
+		ORDER BY a.INDEX asc
+	</select>
+	
+	<select id="getStockCnt">
+		SELECT count(1)
+		FROM STOCK_LIST
+	</select>
+	
+	<select id="getRealCheg" resultType="com.allgo.web.packet.RealCheg">
+		SELECT a.index, b.*
+		FROM STOCK_LIST a
+			left JOIN STOCK_CHEG b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM STOCK_CHEG)
+		ORDER BY a.INDEX asc
+	</select>
+	
+	<select id="getRealProgram" resultType="com.allgo.web.packet.RealProgram">
+		SELECT a.index, a.code, b.date, b.sell_volume, b.sell_amount, b.buy_volume, 
+			b.buy_amount, b.net_buy_volume, b.net_buy_amount, b.market, b.ticker
+		FROM STOCK_LIST a
+			left JOIN STOCK_PROGRAM b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM STOCK_PROGRAM)
+		ORDER BY a.INDEX ASC
 	</select>
 	
 </mapper>

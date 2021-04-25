@@ -56,6 +56,7 @@ public class RedisService {
 			}
 			
 		} catch(Exception e){
+			System.out.println("checkAll");
 			System.out.println(e);
 		}
 		

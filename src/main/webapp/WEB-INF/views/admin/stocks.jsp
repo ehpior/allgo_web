@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -11,11 +12,12 @@
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     </head>
     <script type="text/javascript">
-    	window.onload = function(){	
+    
+    	$(document).ready(function(){	
     	/*$(document).ready(function() {
 			$("#tr_table").load("/admin/stocks_info.allgo",{tr_code:nav_search}); */
-			$("#tr_table").load("/admin/stocks_info.allgo");		
-		};
+			//$("#tr_table").load("/admin/stocks_info.allgo", {curPage:"1"});		
+		});
 	</script>
     <body class="sb-nav-fixed">
         <%@ include file="common/top_nav.jsp" %>
@@ -32,11 +34,13 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                DataTable Example
+                                <form class="form-inline" method="get" action="/admin/stocks.allgo">
+                                	종목코드 : <input type="text" id="curPage" class="form-control" name="curPage" />
+                                	<input type="submit" class="btn btn-primary" />
+                                </form>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive" id="tr_table">
-                                </div>
+                                	<jsp:include page="/WEB-INF/views/admin/table_info.jsp" />
                             </div>
                         </div>
                     </div>
