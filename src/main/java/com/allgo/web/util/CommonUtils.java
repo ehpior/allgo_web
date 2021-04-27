@@ -15,7 +15,7 @@ public class CommonUtils {
 			return false;
 		}
 	}
-
+	
 	public static int str2Int(String value, int defaultValue){
 		if(isInteger(value)){
 			return Integer.parseInt(value);

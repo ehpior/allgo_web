@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.allgo.web.dto.AdminDto;
 import com.allgo.web.dto.StockList;
+import com.allgo.web.packet.AllgoScore;
 import com.allgo.web.packet.RealCheg;
 import com.allgo.web.packet.RealProgram;
 import com.allgo.web.packet.opt10081;
@@ -87,41 +88,50 @@ public class AdminController {
 	public String stocks_cheg(HttpServletRequest request, HttpServletResponse response, SearchForm sForm){
 		logger.info("/stocks_cheg.allgo");
 		
-		List<RealCheg> list = adminServ.getRealCheg();
 		
-		Paging paging = new Paging(list.size(), sForm.getCurPage());
+		Paging paging = new Paging(stockList.getCnt(), sForm.getCurPage());
+		
+		sForm.indexSet(stockList.getCnt());
+		
+		List<RealCheg> list = adminServ.getRealCheg(sForm);
 		
 		request.setAttribute("types", RealCheg.types());
-		request.setAttribute("items", stockList.items(paging.getStartIndex(), paging.getEndIndex()));
+		request.setAttribute("items", list);
 		request.setAttribute("paging", paging);
 		
-		return "admin/stocks";
+		return "admin/stocks_cheg";
 	}
 	@RequestMapping(value = "/stocks_program.allgo")
 	public String stocks_program(HttpServletRequest request, HttpServletResponse response, SearchForm sForm){
 		logger.info("/stocks_program.allgo");
 		
-		List<RealProgram> list = adminServ.getRealProgram();
-		
 		Paging paging = new Paging(stockList.getCnt(), sForm.getCurPage());
 		
+		sForm.indexSet(stockList.getCnt());
+		
+		List<RealProgram> list = adminServ.getRealProgram(sForm);
+		
 		request.setAttribute("types", RealProgram.types());
-		request.setAttribute("items", stockList.items(paging.getStartIndex(), paging.getEndIndex()));
+		request.setAttribute("items", list);
 		request.setAttribute("paging", paging);
 		
-		return "admin/stocks";
+		return "admin/stocks_program";
 	}
-	@RequestMapping(value = "/allgo.allgo")
+	@RequestMapping(value = "/allgos.allgo")
 	public String allgo(HttpServletRequest request, HttpServletResponse response, SearchForm sForm){
 		logger.info("/allgo.allgo");
 		
 		Paging paging = new Paging(stockList.getCnt(), sForm.getCurPage());
 		
-		request.setAttribute("types", stockList.types());
-		request.setAttribute("items", stockList.items(paging.getStartIndex(), paging.getEndIndex()));
+		sForm.indexSet(stockList.getCnt());
+		
+		List<AllgoScore> list = adminServ.getAllgoScore(sForm);
+		
+		request.setAttribute("types", AllgoScore.types());
+		request.setAttribute("items", list);
 		request.setAttribute("paging", paging);
 		
-		return "admin/stocks";
+		return "admin/allgos";
 	}
 	
 	

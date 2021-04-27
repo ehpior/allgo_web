@@ -24,10 +24,10 @@ public class Paging {
 				+ pageSize + ", rowsPerPage=" + rowsPerPage + "]";
 	}
 
-	public Paging(int rowCnt, String curPage){
+	public Paging(int rowCnt, Integer curPage){
 		this.rowCnt = rowCnt;
 		this.lastPage = rowCnt/this.rowsPerPage + 1;
-		this.curPage = CommonUtils.str2Int(curPage, 1);
+		this.curPage = CommonUtils.str2Int(curPage.toString(), 1);
 		
 		if(this.curPage > this.lastPage){
 			this.curPage = this.lastPage;

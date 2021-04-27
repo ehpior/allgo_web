@@ -8,6 +8,7 @@ import com.allgo.web.dto.StockInfo;
 public class RealCheg {
 	
 	private int index;
+	private String date;
 	private String code;	// 종목코드[6]
 	private String time;   // 0. 체결시간[6]
 	private int price;   // 1. 현재가
@@ -37,36 +38,33 @@ public class RealCheg {
 	public static ArrayList<String> types(){
 		ArrayList<String> output = new ArrayList<>();
 	
-		output.add("No");
+		output.add("일자");
 		output.add("종목코드");
-		output.add("체결시간");
-		output.add("현재가");
+		output.add("종가");
 		output.add("전일대비");
 		output.add("등락율");
-		output.add("최우선 매도호가");
-		output.add("최우선 매수호가");
-		output.add("거래량");
 		output.add("누적거래량");
 		output.add("누적거래대금");
 		output.add("시가");
 		output.add("고가");
 		output.add("저가");
-		output.add("전일대비기호");
 		output.add("전일거래량대비");
 		output.add("거래대금증감");
 		output.add("전일거래량대비(비율)");
 		output.add("거래회전율");
-		output.add("거래비율");
 		output.add("체결강도");
 		output.add("시가총액(억)");
-		output.add("장구분");
-		output.add("KO접근도");
-		output.add("상한가발생시간");
-		output.add("하한가발생시간");
 		
 		return output;
 	}
 	
+	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	public int getIndex() {
 		return index;
 	}

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class RealProgram {
 	
 	private int index;
+	private String date;
 	private String code;	// 종목코드[6]
 	private String time;   // 0. 체결시간[6]
 	private int price;   // 1. 현재가
@@ -26,14 +27,12 @@ public class RealProgram {
 	public static ArrayList<String> types(){
 		ArrayList<String> output = new ArrayList<>();
 		
-		output.add("No");
+		output.add("일자");
 		output.add("종목코드");
-		output.add("체결시간");
-		output.add("현재가");
-		output.add("전일대비기호");
+		/*output.add("종가");
 		output.add("전일대비");
 		output.add("등락율");
-		output.add("누적거래량");
+		output.add("누적거래량");*/
 		output.add("매도수량");
 		output.add("매도금액");
 		output.add("매수수량");
@@ -41,13 +40,17 @@ public class RealProgram {
 		output.add("순매수수량");
 		output.add("순매수금액");
 		output.add("순매수금액증감");
-		output.add("장시작예상잔여시간");
-		output.add("장운영구분");
-		output.add("투자자별ticker");
 		
 		return output;
 	}
 	
+	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	public int getIndex() {
 		return index;
 	}

@@ -34,13 +34,13 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                <form class="form-inline" method="get" action="/admin/stocks.allgo">
+                                <form class="form-inline" method="get" action="/admin/allgos.allgo">
                                 	종목코드 : <input type="text" id="curPage" class="form-control" name="curPage" />
                                 	<input type="submit" class="btn btn-primary" />
                                 </form>
                             </div>
                             <div class="card-body">
-                                	<jsp:include page="/WEB-INF/views/admin/stocks_info.jsp" />
+                                	<jsp:include page="/WEB-INF/views/admin/allgos_info.jsp" />
                             </div>
                         </div>
                     </div>

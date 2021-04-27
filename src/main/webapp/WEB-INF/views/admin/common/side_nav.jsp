@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <div id="layoutSidenav_nav">
 	<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 		<div class="sb-sidenav-menu">
@@ -24,7 +26,7 @@
 						<i class="fas fa-table"></i>
 					</div> 프로그램데이터
 				</a>
-				<a class="nav-link" href="/admin/allgo.allgo">
+				<a class="nav-link" href="/admin/allgos.allgo">
 					<div class="sb-nav-link-icon">
 						<i class="fas fa-table"></i>
 					</div> Allgo#1
