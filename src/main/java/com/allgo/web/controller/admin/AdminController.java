@@ -76,11 +76,12 @@ public class AdminController {
 	public String stocks(HttpServletRequest request, HttpServletResponse response, SearchForm sForm){
 		logger.info("/stocks.allgo");
 
-		Paging paging = new Paging(stockList.getCnt(), sForm.getCurPage());
+		//Paging paging = new Paging(stockList.getCnt(), sForm.getCurPage());
 		
 		request.setAttribute("types", stockList.types());
-		request.setAttribute("items", stockList.items(paging.getStartIndex(), paging.getEndIndex()));
-		request.setAttribute("paging", paging);
+		//request.setAttribute("items", stockList.items(paging.getStartIndex(), paging.getEndIndex()));
+		request.setAttribute("items", stockList.getStocks_list());
+		//request.setAttribute("paging", paging);
 		
 		return "admin/stocks";
 	}

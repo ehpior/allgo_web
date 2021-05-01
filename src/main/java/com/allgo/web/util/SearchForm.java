@@ -7,7 +7,7 @@ public class SearchForm {
 	private int startIndex = 0;
 	
 	private Integer curPage = 0;
-	private String code="000000";
+	private String searchCode="";
 	
 	
 	public void indexSet(int maxCnt){
@@ -33,11 +33,12 @@ public class SearchForm {
 	public void setCurPage(Integer curPage) {
 		this.curPage = curPage;
 	}
-	public String getCode() {
-		return code;
+	public String getSearchCode() {
+		return searchCode;
 	}
-	public void setCode(String code) {
-		this.code = code;
+	public void setSearchCode(String searchCode) {
+		this.searchCode = searchCode;
 	}
+	
 	
 }

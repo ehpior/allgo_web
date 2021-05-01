@@ -22,24 +22,4 @@
   		</c:forEach>
  	</tbody>
 </table>
-<ul class="pagination" style="justify-content:center;">
-	<li class="page-item"><a class="page-link" href="/admin/stocks.allgo?curPage=1">First</a></li>
-	<li class="page-item"><a class="page-link" href="/admin/stocks.allgo?curPage=${paging.curPage - paging.pageSize }">Previous</a></li>
-	
-	<c:forEach begin="${paging.startPage }" end="${paging.endPage }" step="1" varStatus="status">
-		<c:choose>
-		<c:when test="${paging.curPage eq status.index }">
-			<li class="page-item active">
-		</c:when>
-		<c:otherwise>
-			<li class="page-item">
-		</c:otherwise>
-		</c:choose>
-			<a class="page-link" href="/admin/stocks.allgo?curPage=${status.index }">${status.index }</a>
-		</li>
-	</c:forEach>
-	
-	<li class="page-item"><a class="page-link" href="/admin/stocks.allgo?curPage=${paging.curPage + paging.pageSize }">Next</a></li>
-  	<li class="page-item"><a class="page-link" href="/admin/stocks.allgo?curPage=${paging.lastPage }">End</a></li>
-</ul>
 </html>

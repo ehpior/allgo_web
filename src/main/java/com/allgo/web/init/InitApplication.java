@@ -36,7 +36,7 @@ public class InitApplication {
 		stockList.setStocks_list(stockInfo);
 		
 		HashMap<String, StockInfo> stocks = new HashMap<>();
-		for(StockInfo sinfo : stockInfo){
+		for(StockInfo sinfo :stockInfo){
 			stocks.put(sinfo.getCode(), sinfo);
 		}
 		stockList.setStocks(stocks);
