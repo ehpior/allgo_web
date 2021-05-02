@@ -1,11 +1,9 @@
-package com.allgo.web.packet;
+package com.allgo.web.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.allgo.web.dto.StockInfo;
-
-public class AllgoScore {
+public class AGScore {
 	
 	private int index;
 	private String date;

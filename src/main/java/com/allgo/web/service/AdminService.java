@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.allgo.web.dao.AdminDaoMapper;
+import com.allgo.web.dto.AGScore;
 import com.allgo.web.dto.AdminDto;
 import com.allgo.web.dto.StockInfo;
-import com.allgo.web.packet.AllgoScore;
 import com.allgo.web.packet.RealCheg;
 import com.allgo.web.packet.RealProgram;
 import com.allgo.web.util.SearchForm;
@@ -32,8 +32,8 @@ public class AdminService {
 	public ArrayList<RealProgram> getRealProgram(SearchForm sForm){
 		return aDao.getRealProgram(sForm);
 	}
-	public ArrayList<AllgoScore> getAllgoScore(SearchForm sForm){
-		return aDao.getAllgoScore(sForm);
+	public ArrayList<AGScore> getAGScore(SearchForm sForm){
+		return aDao.getAGScore(sForm);
 	}
 	public int getStockCnt(){
 		return aDao.getStockCnt();

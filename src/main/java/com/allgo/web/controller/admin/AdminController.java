@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.allgo.web.dto.AGScore;
 import com.allgo.web.dto.AdminDto;
 import com.allgo.web.dto.StockList;
-import com.allgo.web.packet.AllgoScore;
 import com.allgo.web.packet.RealCheg;
 import com.allgo.web.packet.RealProgram;
 import com.allgo.web.packet.opt10081;
@@ -126,9 +126,9 @@ public class AdminController {
 		
 		sForm.indexSet(stockList.getCnt());
 		
-		List<AllgoScore> list = adminServ.getAllgoScore(sForm);
+		List<AGScore> list = adminServ.getAGScore(sForm);
 		
-		request.setAttribute("types", AllgoScore.types());
+		request.setAttribute("types", AGScore.types());
 		request.setAttribute("items", list);
 		request.setAttribute("paging", paging);
 		
