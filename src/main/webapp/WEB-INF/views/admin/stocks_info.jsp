@@ -15,7 +15,7 @@
  			<tr>
  				<td>${item.index}</td>
  				<td>${item.code}</td>
- 				<td>${item.kor_name}</td>
+ 				<td>${item.name_kor}</td>
  				<td>${item.market}</td>
  				<td>${item.price}</td>
 	 		</tr>

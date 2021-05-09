@@ -4,7 +4,7 @@ public class StockInfo {
 	
 	private int index;
 	private String code;
-	private String kor_name;
+	private String name_kor;
 	private int market;
 	private float price;
 	
@@ -20,11 +20,11 @@ public class StockInfo {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public String getKor_name() {
-		return kor_name;
+	public String getName_kor() {
+		return name_kor;
 	}
-	public void setKor_name(String kor_name) {
-		this.kor_name = kor_name;
+	public void setName_kor(String name_kor) {
+		this.name_kor = name_kor;
 	}
 	public int getMarket() {
 		return market;
