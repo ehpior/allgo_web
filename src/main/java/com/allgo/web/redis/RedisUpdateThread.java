@@ -16,7 +16,7 @@ import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import com.allgo.web.dto.StockList;
+import com.allgo.web.dto.StockInfo;
 
 @EnableScheduling
 @Configuration
@@ -42,7 +42,7 @@ public class RedisUpdateThread{
 	private HashOperations<String, String, Object> hashOps;
 	
 	@Autowired
-	StockList stockList;
+	StockInfo stockList;
 
 	@Scheduled(fixedDelay = 5000, initialDelay = 3000) 
 	private void scheduleTest(){ 

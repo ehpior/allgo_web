@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.allgo.web.dto.AGScore;
 import com.allgo.web.dto.AdminDto;
-import com.allgo.web.dto.StockList;
+import com.allgo.web.dto.StockInfo;
 import com.allgo.web.packet.RealCheg;
 import com.allgo.web.packet.RealProgram;
 import com.allgo.web.packet.opt10081;
@@ -26,6 +25,7 @@ import com.allgo.web.util.Paging;
 import com.allgo.web.util.SearchForm;
 import com.allgo.web.util.SessionUtils;
 import com.allgo.web.util.WebUtils;
+import com.allgo.web.vo.ag_score;
 
 /**
  * Handles requests for the application home page.
@@ -39,7 +39,7 @@ public class AdminController {
 	AdminService adminServ;
 	
 	@Autowired
-	StockList stockList;
+	StockInfo stockList;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -126,9 +126,9 @@ public class AdminController {
 		
 		sForm.indexSet(stockList.getCnt());
 		
-		List<AGScore> list = adminServ.getAGScore(sForm);
+		List<ag_score> list = adminServ.getAg_score(sForm);
 		
-		request.setAttribute("types", AGScore.types());
+		request.setAttribute("types", ag_score.types());
 		request.setAttribute("items", list);
 		request.setAttribute("paging", paging);
 		

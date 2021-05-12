@@ -39,7 +39,7 @@
 		limit #{startIndex}, #{rowsPerPage}
 	</select>
 	
-	<select id="getAGScore" parameterType="com.allgo.web.util.SearchForm" resultType="com.allgo.web.packet.AGScore">
+	<select id="getAGScore" parameterType="com.allgo.web.util.SearchForm" resultType="com.allgo.web.dto.AGScore">
 		SELECT a.index, a.code, b.*
 		FROM STOCK_LIST a
 			left JOIN AG_SCORE b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM AG_SCORE)

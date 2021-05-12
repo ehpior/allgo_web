@@ -7,26 +7,17 @@
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 <script src="/admin/resources/assets/demo/datatables-demo.js"></script>
 
-<script type="text/javascript">
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-function jniTest(){
- 	var nav_search = $("#nav_search").val();
-  	console.log(nav_search);
-  	$("#tr_table").load("/admin/table.allgo",{tr_code:nav_search});
-  	/* $.ajax({
-		async: false,
-		type: 'POST',
-		data: {"jniTest":nav_search},
-		url: "/admin/jniTest2.do",
-		success: function(res) {
-			alert(res);
-		},
-		error: function (request, status, error) {
-			alert("ErrorCode["+request.status+"]: "+error);
-		}
-	}); */
-}
-</script>
+<div id="layoutAuthentication_footer">
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

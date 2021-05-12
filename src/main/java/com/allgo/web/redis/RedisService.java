@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.allgo.web.dto.StockInfo;
-import com.allgo.web.dto.StockList;
+import com.allgo.web.vo.stock_list;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service("redisService")
@@ -40,12 +40,12 @@ public class RedisService {
 	private HashOperations<String, String, Object> hashOps;
 	
 	@Autowired
-	StockList stockList;
+	StockInfo stockList;
 	
 	public void checkAll(){
 		
 		try{
-			HashMap<String, StockInfo> stocks = stockList.getStocks();
+			HashMap<String, stock_list> stocks = stockList.getStocks();
 			
 			for(String code : stocks.keySet()){
 				float price = stocks.get(code).getPrice();
