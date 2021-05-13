@@ -1,4 +1,4 @@
-package com.allgo.web.util;
+package com.allgo.web.dto;
 
 public class SearchForm {
 	

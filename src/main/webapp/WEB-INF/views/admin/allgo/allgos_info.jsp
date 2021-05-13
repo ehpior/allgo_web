@@ -14,7 +14,6 @@
  		<c:forEach var="item" items="${items}" varStatus="status">
  			<tr>
  				<td>${item.date}</td>
- 				<td>${item.rank}</td>
  				<td>${item.type}</td>
  				<td>${item.code}</td>
  				<td>${item.score}</td>

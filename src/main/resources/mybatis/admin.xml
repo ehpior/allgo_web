@@ -10,7 +10,7 @@
 			and password = #{password}
 	</select>
 	
-	<select id="stockListInit" resultType="com.allgo.web.dto.StockInfo">
+	<select id="stockInfoInit" resultType="com.allgo.web.vo.stock_list">
 		SELECT a.*, b.price as price
 		FROM STOCK_LIST a
 			left JOIN STOCK_CHEG b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM STOCK_CHEG)
@@ -22,7 +22,7 @@
 		FROM STOCK_LIST
 	</select>
 	
-	<select id="getRealCheg" parameterType="com.allgo.web.util.SearchForm" resultType="com.allgo.web.packet.RealCheg">
+	<select id="getRealCheg" parameterType="com.allgo.web.dto.SearchForm" resultType="com.allgo.web.packet.RealCheg">
 		SELECT a.index, b.*
 		FROM STOCK_LIST a
 			left JOIN STOCK_CHEG b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM STOCK_CHEG)
@@ -30,7 +30,7 @@
 		limit #{startIndex}, #{rowsPerPage}
 	</select>
 	
-	<select id="getRealProgram" parameterType="com.allgo.web.util.SearchForm" resultType="com.allgo.web.packet.RealProgram">
+	<select id="getRealProgram" parameterType="com.allgo.web.dto.SearchForm" resultType="com.allgo.web.packet.RealProgram">
 		SELECT a.index, a.code, b.date, b.sell_volume, b.sell_amount, b.buy_volume, 
 			b.buy_amount, b.net_buy_volume, b.net_buy_amount, b.market, b.ticker
 		FROM STOCK_LIST a
@@ -39,7 +39,7 @@
 		limit #{startIndex}, #{rowsPerPage}
 	</select>
 	
-	<select id="getAGScore" parameterType="com.allgo.web.util.SearchForm" resultType="com.allgo.web.dto.AGScore">
+	<select id="getAg_score" parameterType="com.allgo.web.dto.SearchForm" resultType="com.allgo.web.vo.ag_score">
 		SELECT a.index, a.code, b.*
 		FROM STOCK_LIST a
 			left JOIN AG_SCORE b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM AG_SCORE)

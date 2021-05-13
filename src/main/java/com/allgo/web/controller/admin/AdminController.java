@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.allgo.web.dto.AdminDto;
+import com.allgo.web.dto.SearchForm;
 import com.allgo.web.dto.StockInfo;
 import com.allgo.web.packet.RealCheg;
 import com.allgo.web.packet.RealProgram;
@@ -22,7 +23,6 @@ import com.allgo.web.packet.opt10081;
 import com.allgo.web.redis.RedisService;
 import com.allgo.web.service.AdminService;
 import com.allgo.web.util.Paging;
-import com.allgo.web.util.SearchForm;
 import com.allgo.web.util.SessionUtils;
 import com.allgo.web.util.WebUtils;
 import com.allgo.web.vo.ag_score;
@@ -83,7 +83,7 @@ public class AdminController {
 		request.setAttribute("items", stockList.getStocks_list());
 		//request.setAttribute("paging", paging);
 		
-		return "admin/stocks";
+		return "admin/stocks/stocks";
 	}
 	@RequestMapping(value = "/stocks_cheg.allgo")
 	public String stocks_cheg(HttpServletRequest request, HttpServletResponse response, SearchForm sForm){
@@ -100,7 +100,7 @@ public class AdminController {
 		request.setAttribute("items", list);
 		request.setAttribute("paging", paging);
 		
-		return "admin/stocks_cheg";
+		return "admin/stocks/stocks_cheg";
 	}
 	@RequestMapping(value = "/stocks_program.allgo")
 	public String stocks_program(HttpServletRequest request, HttpServletResponse response, SearchForm sForm){
@@ -116,7 +116,7 @@ public class AdminController {
 		request.setAttribute("items", list);
 		request.setAttribute("paging", paging);
 		
-		return "admin/stocks_program";
+		return "admin/stocks/stocks_program";
 	}
 	@RequestMapping(value = "/allgos.allgo")
 	public String allgo(HttpServletRequest request, HttpServletResponse response, SearchForm sForm){
@@ -132,7 +132,7 @@ public class AdminController {
 		request.setAttribute("items", list);
 		request.setAttribute("paging", paging);
 		
-		return "admin/allgos";
+		return "admin/allgo/allgos";
 	}
 	
 	
@@ -156,21 +156,21 @@ public class AdminController {
 			return "redirect:/admin/main.allgo";
 		}
 		
-		return "admin/login";
+		return "admin/login/login";
 	}
 	
 	@RequestMapping(value = "/signUp.login", method = RequestMethod.GET)
 	public String signUpPage(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("signUp.login");
 		
-		return "admin/register";
+		return "admin/login/register";
 	}
 	
 	@RequestMapping(value = "/password.login", method = RequestMethod.GET)
 	public String passwordPage(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("password.login");
 		
-		return "admin/password";
+		return "admin/login/password";
 	}
 	
 	@RequestMapping(value = "/login.do")

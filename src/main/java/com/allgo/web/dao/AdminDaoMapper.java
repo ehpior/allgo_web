@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
 
 import com.allgo.web.dto.AdminDto;
+import com.allgo.web.dto.SearchForm;
 import com.allgo.web.packet.RealCheg;
 import com.allgo.web.packet.RealProgram;
-import com.allgo.web.util.SearchForm;
 import com.allgo.web.vo.ag_score;
 import com.allgo.web.vo.stock_list;
 
