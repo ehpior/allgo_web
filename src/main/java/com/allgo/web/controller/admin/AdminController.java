@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.allgo.web.dto.AdminDto;
 import com.allgo.web.dto.SearchForm;
 import com.allgo.web.dto.StockInfo;
-import com.allgo.web.packet.RealCheg;
-import com.allgo.web.packet.RealProgram;
 import com.allgo.web.packet.opt10081;
 import com.allgo.web.redis.RedisService;
 import com.allgo.web.service.AdminService;
@@ -26,6 +24,8 @@ import com.allgo.web.util.Paging;
 import com.allgo.web.util.SessionUtils;
 import com.allgo.web.util.WebUtils;
 import com.allgo.web.vo.ag_score;
+import com.allgo.web.vo.stock_cheg;
+import com.allgo.web.vo.stock_program;
 
 /**
  * Handles requests for the application home page.
@@ -72,7 +72,7 @@ public class AdminController {
 		return "admin/main";
 	}
 	
-	@RequestMapping(value = "/stocks.allgo")
+	@RequestMapping(value = "/stocks/list.allgo")
 	public String stocks(HttpServletRequest request, HttpServletResponse response, SearchForm sForm){
 		logger.info("/stocks.allgo");
 
@@ -83,48 +83,54 @@ public class AdminController {
 		request.setAttribute("items", stockList.getStocks_list());
 		//request.setAttribute("paging", paging);
 		
-		return "admin/stocks/stocks";
+		return "admin/stocks/list";
 	}
-	@RequestMapping(value = "/stocks_cheg.allgo")
+	@RequestMapping(value = "/stocks/cheg.allgo")
 	public String stocks_cheg(HttpServletRequest request, HttpServletResponse response, SearchForm sForm){
 		logger.info("/stocks_cheg.allgo");
 		
+		int cnt = adminServ.cntStock_cheg(sForm);
 		
-		Paging paging = new Paging(stockList.getCnt(), sForm.getCurPage());
+		Paging paging = new Paging(cnt, sForm.getCurPage());
 		
-		sForm.indexSet(stockList.getCnt());
+		sForm.indexSet(cnt);
 		
-		List<RealCheg> list = adminServ.getRealCheg(sForm);
+		List<stock_cheg> list = adminServ.getStock_cheg(sForm);
 		
-		request.setAttribute("types", RealCheg.types());
+		request.setAttribute("types", stock_cheg.types());
 		request.setAttribute("items", list);
 		request.setAttribute("paging", paging);
 		
-		return "admin/stocks/stocks_cheg";
+		return "admin/stocks/cheg";
 	}
-	@RequestMapping(value = "/stocks_program.allgo")
+	@RequestMapping(value = "/stocks/program.allgo")
 	public String stocks_program(HttpServletRequest request, HttpServletResponse response, SearchForm sForm){
 		logger.info("/stocks_program.allgo");
 		
-		Paging paging = new Paging(stockList.getCnt(), sForm.getCurPage());
+		int cnt = adminServ.cntStock_program(sForm);
 		
-		sForm.indexSet(stockList.getCnt());
+		Paging paging = new Paging(cnt, sForm.getCurPage());
 		
-		List<RealProgram> list = adminServ.getRealProgram(sForm);
+		sForm.indexSet(cnt);
 		
-		request.setAttribute("types", RealProgram.types());
+		List<stock_program> list = adminServ.getStock_program(sForm);
+		
+		request.setAttribute("types", stock_program.types());
 		request.setAttribute("items", list);
 		request.setAttribute("paging", paging);
 		
-		return "admin/stocks/stocks_program";
+		return "admin/stocks/program";
 	}
-	@RequestMapping(value = "/allgos.allgo")
+	
+	@RequestMapping(value = "/allgo/score.allgo")
 	public String allgo(HttpServletRequest request, HttpServletResponse response, SearchForm sForm){
 		logger.info("/allgo.allgo");
 		
-		Paging paging = new Paging(stockList.getCnt(), sForm.getCurPage());
+		int cnt = adminServ.cntAg_score(sForm);
 		
-		sForm.indexSet(stockList.getCnt());
+		Paging paging = new Paging(cnt, sForm.getCurPage());
+		
+		sForm.indexSet(cnt);
 		
 		List<ag_score> list = adminServ.getAg_score(sForm);
 		
@@ -132,7 +138,7 @@ public class AdminController {
 		request.setAttribute("items", list);
 		request.setAttribute("paging", paging);
 		
-		return "admin/allgo/allgos";
+		return "admin/allgo/score";
 	}
 	
 	

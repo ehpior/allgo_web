@@ -33,51 +33,51 @@
 
 
 				<div class="sb-sidenav-menu-heading">Stocks</div>
-				<a class="nav-link" href="/admin/stocks.allgo">
+				<a class="nav-link" href="/admin/stocks/list.allgo">
 					Stocks
-				</a> <a class="nav-link" href="/admin/stocks_cheg.allgo">
+				</a> <a class="nav-link" href="/admin/stocks/cheg.allgo">
 					체결데이터
-				</a> <a class="nav-link" href="/admin/stocks_program.allgo">
+				</a> <a class="nav-link" href="/admin/stocks/program.allgo">
 					프로그램데이터
 				</a>
 
 
 				<div class="sb-sidenav-menu-heading">알고리즘</div>
-				<a class="nav-link" href="/admin/portfolio.allgo">
+				<a class="nav-link" href="/admin/allgo/portfolio.allgo">
 					포트폴리오
-				</a> <a class="nav-link" href="/admin/allgo_info.allgo">
+				</a> <a class="nav-link" href="/admin/allgo/info.allgo">
 					분석 정보
-				</a> <a class="nav-link" href="/admin/benefit.allgo">
+				</a> <a class="nav-link" href="/admin/allgo/benefit.allgo">
 					수익률
-				</a> <a class="nav-link" href="/admin/allgo_score.allgo">
+				</a> <a class="nav-link" href="/admin/allgo/score.allgo">
 					스코어
 				</a>
 
 
 				<div class="sb-sidenav-menu-heading">고객 관리</div>
-				<a class="nav-link" href="/admin/order_history.allgo">
+				<a class="nav-link" href="/admin/order/history.allgo">
 					결제 조회
-				</a> <a class="nav-link" href="/admin/refund.allgo">
+				</a> <a class="nav-link" href="/admin/order/refund.allgo">
 					환불
-				</a> <a class="nav-link" href="/admin/user_info.allgo">
+				</a> <a class="nav-link" href="/admin/user/info.allgo">
 					고객 정보
-				</a> <a class="nav-link" href="/admin/user_notice.allgo">
+				</a> <a class="nav-link" href="/admin/user/notice.allgo">
 					알림 전송
 				</a>
 
 
 				<div class="sb-sidenav-menu-heading">앱 PUSH</div>
-				<a class="nav-link" href="/admin/push_history.allgo">
+				<a class="nav-link" href="/admin/push/history.allgo">
 					PUSH 내역
-				</a> <a class="nav-link" href="/admin/push.allgo">
+				</a> <a class="nav-link" href="/admin/push/send.allgo">
 					PUSH 전송
 				</a> 
 				
 				
 				<div class="sb-sidenav-menu-heading">앱 마케팅</div>
-				<a class="nav-link" href="/admin/stocks.allgo">
+				<a class="nav-link" href="/admin/marketing/banner.allgo">
 					배너 관리
-				</a> <a class="nav-link" href="/admin/stocks_cheg.allgo">
+				</a> <a class="nav-link" href="/admin/marketing/notice.allgo">
 					공지사항 관리
 				</a> 
 				

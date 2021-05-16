@@ -15,24 +15,27 @@
  			<tr>
  				<td>${item.date}</td>
  				<td>${item.code}</td>
- 				<%-- <td>${item.price}</td>
+ 				<td>${item.price}</td>
  				<td>${item.change_price}</td>
  				<td>${item.increase_rate}</td>
- 				<td>${item.cul_volume}</td> --%>
- 				<td>${item.sell_volume}</td>
- 				<td>${item.sell_amount}</td>
- 				<td>${item.buy_volume}</td>
- 				<td>${item.buy_amount}</td>
- 				<td>${item.net_buy_volume}</td>
- 				<td>${item.net_buy_amount}</td>
+ 				<td>${item.cul_volume}</td>
+ 				<td>${item.cul_amount}</td>
+ 				<td>${item.open}</td>
+ 				<td>${item.high}</td>
+ 				<td>${item.low}</td>
  				<td>${item.a1}</td>
+ 				<td>${item.a2}</td>
+ 				<td>${item.a3}</td>
+ 				<td>${item.turn_over}</td>
+ 				<td>${item.volume_power}</td>
+ 				<td>${item.capitalization}</td>
 	 		</tr>
   		</c:forEach>
  	</tbody>
 </table>
 <ul class="pagination" style="justify-content:center;">
-	<li class="page-item"><a class="page-link" href="/admin/stocks_program.allgo?curPage=1">First</a></li>
-	<li class="page-item"><a class="page-link" href="/admin/stocks_program.allgo?curPage=${paging.curPage - paging.pageSize }">Previous</a></li>
+	<li class="page-item"><a class="page-link" href="/admin/stocks/cheg.allgo?curPage=1">First</a></li>
+	<li class="page-item"><a class="page-link" href="/admin/stocks/cheg.allgo?curPage=${paging.curPage - paging.pageSize }">Previous</a></li>
 	
 	<c:forEach begin="${paging.startPage }" end="${paging.endPage }" step="1" varStatus="status">
 		<c:choose>
@@ -43,11 +46,11 @@
 			<li class="page-item">
 		</c:otherwise>
 		</c:choose>
-			<a class="page-link" href="/admin/stocks_program.allgo?curPage=${status.index }">${status.index }</a>
+			<a class="page-link" href="/admin/stocks/cheg.allgo?curPage=${status.index }">${status.index }</a>
 		</li>
 	</c:forEach>
 	
-	<li class="page-item"><a class="page-link" href="/admin/stocks_program.allgo?curPage=${paging.curPage + paging.pageSize }">Next</a></li>
-  	<li class="page-item"><a class="page-link" href="/admin/stocks_program.allgo?curPage=${paging.lastPage }">End</a></li>
+	<li class="page-item"><a class="page-link" href="/admin/stocks/cheg.allgo?curPage=${paging.curPage + paging.pageSize }">Next</a></li>
+  	<li class="page-item"><a class="page-link" href="/admin/stocks/cheg.allgo?curPage=${paging.lastPage }">End</a></li>
 </ul>
 </html>

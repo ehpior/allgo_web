@@ -14,6 +14,7 @@
 		SELECT a.*, b.price as price
 		FROM STOCK_LIST a
 			left JOIN STOCK_CHEG b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM STOCK_CHEG)
+		WHERE b.code IS NOT null
 		ORDER BY a.INDEX asc
 	</select>
 	
@@ -22,29 +23,103 @@
 		FROM STOCK_LIST
 	</select>
 	
-	<select id="getRealCheg" parameterType="com.allgo.web.dto.SearchForm" resultType="com.allgo.web.packet.RealCheg">
-		SELECT a.index, b.*
+	<select id="getStock_cheg" parameterType="com.allgo.web.dto.SearchForm" resultType="com.allgo.web.vo.stock_cheg">
+		SELECT b.*
 		FROM STOCK_LIST a
-			left JOIN STOCK_CHEG b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM STOCK_CHEG)
+			left JOIN STOCK_CHEG b ON b.code = a.code 
+			<choose>
+				<when test="startDate != null and startDate != ''">
+					and b.date <![CDATA[>=]]> #{startDate}
+				</when>
+				<when test="endDate != null and endDate != ''">
+					and b.date <![CDATA[<=]]> #{endDate}
+				</when>
+				<otherwise>
+					AND b.date = (SELECT MAX(DATE) FROM STOCK_CHEG)
+				</otherwise>
+			</choose>
+		WHERE b.code IS NOT null
 		ORDER BY a.INDEX asc
 		limit #{startIndex}, #{rowsPerPage}
 	</select>
 	
-	<select id="getRealProgram" parameterType="com.allgo.web.dto.SearchForm" resultType="com.allgo.web.packet.RealProgram">
-		SELECT a.index, a.code, b.date, b.sell_volume, b.sell_amount, b.buy_volume, 
+	<select id="cntStock_cheg" parameterType="com.allgo.web.dto.SearchForm" resultType="int">
+		SELECT count(1)
+		FROM STOCK_LIST a
+			left JOIN STOCK_CHEG b ON b.code = a.code 
+			<choose>
+				<when test="startDate != null and startDate != ''">
+					and b.date <![CDATA[>=]]> #{startDate}
+				</when>
+				<when test="endDate != null and endDate != ''">
+					and b.date <![CDATA[<=]]> #{endDate}
+				</when>
+				<otherwise>
+					AND b.date = (SELECT MAX(DATE) FROM STOCK_CHEG)
+				</otherwise>
+			</choose>
+		WHERE b.code IS NOT null
+	</select>
+	
+	<select id="getStock_program" parameterType="com.allgo.web.dto.SearchForm" resultType="com.allgo.web.vo.stock_program">
+		SELECT a.code, b.date, b.sell_volume, b.sell_amount, b.buy_volume, 
 			b.buy_amount, b.net_buy_volume, b.net_buy_amount, b.market, b.ticker
 		FROM STOCK_LIST a
-			left JOIN STOCK_PROGRAM b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM STOCK_PROGRAM)
+			left JOIN STOCK_PROGRAM b ON b.code = a.code 
+			<choose>
+				<when test="startDate != null and startDate != ''">
+					and b.date <![CDATA[>=]]> #{startDate}
+				</when>
+				<when test="endDate != null and endDate != ''">
+					and b.date <![CDATA[<=]]> #{endDate}
+				</when>
+				<otherwise>
+					AND b.date = (SELECT MAX(DATE) FROM STOCK_PROGRAM)
+				</otherwise>
+			</choose>
+		WHERE b.code IS NOT null
 		ORDER BY a.INDEX ASC
 		limit #{startIndex}, #{rowsPerPage}
 	</select>
 	
+	<select id="cntStock_program" parameterType="com.allgo.web.dto.SearchForm" resultType="int">
+		SELECT count(1)
+		FROM STOCK_LIST a
+			left JOIN STOCK_PROGRAM b ON b.code = a.code 
+			<choose>
+				<when test="startDate != null and startDate != ''">
+					and b.date <![CDATA[>=]]> #{startDate}
+				</when>
+				<when test="endDate != null and endDate != ''">
+					and b.date <![CDATA[<=]]> #{endDate}
+				</when>
+				<otherwise>
+					AND b.date = (SELECT MAX(DATE) FROM STOCK_PROGRAM)
+				</otherwise>
+			</choose>
+		WHERE b.code IS NOT null
+	</select>
+	
 	<select id="getAg_score" parameterType="com.allgo.web.dto.SearchForm" resultType="com.allgo.web.vo.ag_score">
-		SELECT a.index, a.code, b.*
+		SELECT a.index, a.code, a.name_kor, b.*
 		FROM STOCK_LIST a
 			left JOIN AG_SCORE b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM AG_SCORE)
+		WHERE b.code IS NOT null
+			<if test="type != null and type != ''">
+			and type = #{type} 
+			</if>
 		ORDER BY b.date desc, b.score desc
 		limit #{startIndex}, #{rowsPerPage}
+	</select>
+	
+	<select id="cntAg_score" parameterType="com.allgo.web.dto.SearchForm" resultType="int">
+		SELECT count(1)
+		FROM STOCK_LIST a
+			left JOIN AG_SCORE b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM AG_SCORE)
+		WHERE b.code IS NOT null
+			<if test="type != null and type != ''">
+			and type = #{type} 
+			</if>
 	</select>
 	
 </mapper>

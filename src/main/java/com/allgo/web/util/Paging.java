@@ -14,7 +14,7 @@ public class Paging {
 	private int lastPage; // 마지막 페이지
 	
 	private int pageSize = 10;
-	private int rowsPerPage = 20;
+	private int rowsPerPage = 100;
 	
 
 	@Override

@@ -10,6 +10,7 @@ public class ag_score {
 	private String date;
 	private String type;
 	private String code;
+	private String name_kor;
 	private String score;
 	private String create_time;
 	
@@ -17,9 +18,9 @@ public class ag_score {
 		ArrayList<String> output = new ArrayList<>();
 	
 		output.add("일자");
-		output.add("랭크");
 		output.add("타입");
 		output.add("종목코드");
+		output.add("종목명");
 		output.add("점수");
 		
 		return output;

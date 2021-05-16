@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <head>
-<title>Tables - SB Admin</title>
 <%@ include file="/WEB-INF/views/admin/common/header.jsp"%>
+<title>Tables - SB Admin2</title>
 </head>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -26,9 +26,17 @@
 					<li class="breadcrumb-item active">Tables</li>
 				</ol>
 				<div class="card mb-4">
-					<div class="card-header"></div>
+					<div class="card-header">
+						<i class="fas fa-table mr-1"></i>
+						<form class="form-inline" method="get"
+							action="/admin/stocks_program.allgo">
+							종목코드 : <input type="text" id="curPage" class="form-control"
+								name="curPage" /> <input type="submit" class="btn btn-primary" />
+						</form>
+					</div>
 					<div class="card-body">
-						<jsp:include page="/WEB-INF/views/admin/stocks/stocks_info.jsp" />
+						<jsp:include
+							page="/WEB-INF/views/admin/stocks/program_info.jsp" />
 					</div>
 				</div>
 			</div>
