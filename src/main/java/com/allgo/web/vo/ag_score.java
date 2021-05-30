@@ -2,9 +2,6 @@ package com.allgo.web.vo;
 
 import java.util.ArrayList;
 
-import lombok.Data;
-
-@Data
 public class ag_score {
 	
 	private String date;
@@ -24,6 +21,54 @@ public class ag_score {
 		output.add("점수");
 		
 		return output;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getName_kor() {
+		return name_kor;
+	}
+
+	public void setName_kor(String name_kor) {
+		this.name_kor = name_kor;
+	}
+
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
+	}
+
+	public String getCreate_time() {
+		return create_time;
+	}
+
+	public void setCreate_time(String create_time) {
+		this.create_time = create_time;
 	}
 
 }

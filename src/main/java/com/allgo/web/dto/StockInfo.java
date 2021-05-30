@@ -6,9 +6,6 @@ import java.util.List;
 
 import com.allgo.web.vo.stock_list;
 
-import lombok.Data;
-
-@Data
 public class StockInfo {
 	
 	private int cnt;
@@ -32,6 +29,30 @@ public class StockInfo {
 		List<stock_list> output = stocks_list.subList(startIndex, endIndex);
 		
 		return output;
+	}
+
+	public int getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+
+	public ArrayList<stock_list> getStocks_list() {
+		return stocks_list;
+	}
+
+	public void setStocks_list(ArrayList<stock_list> stocks_list) {
+		this.stocks_list = stocks_list;
+	}
+
+	public HashMap<String, stock_list> getStocks() {
+		return stocks;
+	}
+
+	public void setStocks(HashMap<String, stock_list> stocks) {
+		this.stocks = stocks;
 	}
 
 }

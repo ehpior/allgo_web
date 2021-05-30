@@ -28,15 +28,12 @@
 		FROM STOCK_LIST a
 			left JOIN STOCK_CHEG b ON b.code = a.code 
 			<choose>
-				<when test="startDate != null and startDate != ''">
-					and b.date <![CDATA[>=]]> #{startDate}
+				<when test="start_date != null and start_date != ''">
+					and b.date <![CDATA[>=]]> #{start_date}
 				</when>
-				<when test="endDate != null and endDate != ''">
-					and b.date <![CDATA[<=]]> #{endDate}
+				<when test="end_date != null and end_date != ''">
+					and b.date <![CDATA[<=]]> #{end_date}
 				</when>
-				<otherwise>
-					AND b.date = (SELECT MAX(DATE) FROM STOCK_CHEG)
-				</otherwise>
 			</choose>
 		WHERE b.code IS NOT null
 		ORDER BY a.INDEX asc
@@ -48,15 +45,12 @@
 		FROM STOCK_LIST a
 			left JOIN STOCK_CHEG b ON b.code = a.code 
 			<choose>
-				<when test="startDate != null and startDate != ''">
-					and b.date <![CDATA[>=]]> #{startDate}
+				<when test="start_date != null and start_date != ''">
+					and b.date <![CDATA[>=]]> #{start_date}
 				</when>
-				<when test="endDate != null and endDate != ''">
-					and b.date <![CDATA[<=]]> #{endDate}
+				<when test="end_date != null and end_date != ''">
+					and b.date <![CDATA[<=]]> #{end_date}
 				</when>
-				<otherwise>
-					AND b.date = (SELECT MAX(DATE) FROM STOCK_CHEG)
-				</otherwise>
 			</choose>
 		WHERE b.code IS NOT null
 	</select>
@@ -67,15 +61,12 @@
 		FROM STOCK_LIST a
 			left JOIN STOCK_PROGRAM b ON b.code = a.code 
 			<choose>
-				<when test="startDate != null and startDate != ''">
-					and b.date <![CDATA[>=]]> #{startDate}
+				<when test="start_date != null and start_date != ''">
+					and b.date <![CDATA[>=]]> #{start_date}
 				</when>
-				<when test="endDate != null and endDate != ''">
-					and b.date <![CDATA[<=]]> #{endDate}
+				<when test="end_date != null and end_date != ''">
+					and b.date <![CDATA[<=]]> #{end_date}
 				</when>
-				<otherwise>
-					AND b.date = (SELECT MAX(DATE) FROM STOCK_PROGRAM)
-				</otherwise>
 			</choose>
 		WHERE b.code IS NOT null
 		ORDER BY a.INDEX ASC
@@ -87,15 +78,12 @@
 		FROM STOCK_LIST a
 			left JOIN STOCK_PROGRAM b ON b.code = a.code 
 			<choose>
-				<when test="startDate != null and startDate != ''">
-					and b.date <![CDATA[>=]]> #{startDate}
+				<when test="start_date != null and start_date != ''">
+					and b.date <![CDATA[>=]]> #{start_date}
 				</when>
-				<when test="endDate != null and endDate != ''">
-					and b.date <![CDATA[<=]]> #{endDate}
+				<when test="end_date != null and end_date != ''">
+					and b.date <![CDATA[<=]]> #{end_date}
 				</when>
-				<otherwise>
-					AND b.date = (SELECT MAX(DATE) FROM STOCK_PROGRAM)
-				</otherwise>
 			</choose>
 		WHERE b.code IS NOT null
 	</select>
@@ -103,10 +91,13 @@
 	<select id="getAg_score" parameterType="com.allgo.web.dto.SearchForm" resultType="com.allgo.web.vo.ag_score">
 		SELECT a.index, a.code, a.name_kor, b.*
 		FROM STOCK_LIST a
-			left JOIN AG_SCORE b ON b.code = a.code AND b.date = (SELECT MAX(DATE) FROM AG_SCORE)
+			left JOIN AG_SCORE b ON b.code = a.code
 		WHERE b.code IS NOT null
 			<if test="type != null and type != ''">
 			and type = #{type} 
+			</if>
+			<if test="search_date != null and search_date != ''">
+			and b.date = #{search_date}
 			</if>
 		ORDER BY b.date desc, b.score desc
 		limit #{startIndex}, #{rowsPerPage}
@@ -119,6 +110,9 @@
 		WHERE b.code IS NOT null
 			<if test="type != null and type != ''">
 			and type = #{type} 
+			</if>
+			<if test="search_date != null and search_date != ''">
+			and b.date = #{search_date}
 			</if>
 	</select>
 	

@@ -28,11 +28,11 @@
 				<div class="card mb-4">
 					<div class="card-header">
 						<i class="fas fa-table mr-1"></i>
-						<form class="form-inline" method="get"
+						<!-- <form class="form-inline" method="get"
 							action="/admin/stocks_cheg.allgo">
 							종목코드 : <input type="text" id="curPage" class="form-control"
 								name="curPage" /> <input type="submit" class="btn btn-primary" />
-						</form>
+						</form> -->
 					</div>
 					<div class="card-body">
 						<jsp:include
