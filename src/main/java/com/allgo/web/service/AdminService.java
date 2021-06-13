@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.allgo.web.dao.AdminDaoMapper;
 import com.allgo.web.dto.AdminDto;
 import com.allgo.web.dto.SearchForm;
+import com.allgo.web.vo.AgPortfolio;
 import com.allgo.web.vo.ag_score;
 import com.allgo.web.vo.stock_cheg;
 import com.allgo.web.vo.stock_list;
@@ -46,6 +47,12 @@ public class AdminService {
 	}
 	public int getStockCnt(){
 		return aDao.getStockCnt();
+	}
+	public ArrayList<AgPortfolio> selectPortfolio(SearchForm sForm){
+		return aDao.selectPortfolio(sForm);
+	}
+	public int getTotalCntPortfolio(){
+		return aDao.getTotalCntPortfolio();
 	}
 
 }

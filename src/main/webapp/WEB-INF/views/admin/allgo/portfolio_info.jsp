@@ -2,6 +2,43 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+
+<table class="table table-hover" id="table" width="100%" cellspacing="0">
+    <thead class="thead-dark">
+        <tr>
+        	<th>타입</th>
+        	<th>종목코드</th>
+        	<th>종목명</th>
+        	<th>매수일</th>
+        	<th>매수가</th>
+        	<th>매도일</th>
+        	<th>매도가</th>
+        	<th>비중</th>
+        	<th>잔여비중</th>
+        	<th>보유일</th>
+        	<th>상태</th>
+        	<th>평단가</th>
+        	<th>현재가</th>
+        	<th></th>
+        </tr>
+    </thead>
+ 	<tbody>
+ 		<c:forEach var="item" items="${items}" varStatus="status">
+ 			<tr>
+ 				<td>${item.date}</td>
+ 				<td>${item.type}</td>
+ 				<td>${item.code}</td>
+ 				<td>${item.name_kor}</td>
+ 				<td>${item.score}</td>
+	 		</tr>
+  		</c:forEach>
+ 	</tbody>
+</table>
+
+
+
+
+
 <table class="table table-hover" id="table" width="100%" cellspacing="0">
     <thead class="thead-dark">
         <tr>

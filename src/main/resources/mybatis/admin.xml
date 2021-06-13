@@ -116,4 +116,21 @@
 			</if>
 	</select>
 	
+	<resultMap id="AgPortfolioResult" type="com.allgo.web.vo.AgPortfolio">
+		<id column="id" property="id" />
+		<collection property="agPortHistory" column="id" ofType="com.allgo.web.vo.AgPortfolioHistory" select="selectPortfolioHistory"/>
+	</resultMap>
+	
+	<select id="selectPortfolio" parameterType="com.allgo.web.dto.SearchForm" resultMap="AgPortfolioResult">
+	  SELECT * from AG_PORTFOLIO
+	</select>
+	
+	<select id="selectPortfolioHistory" resultType="com.allgo.web.vo.AgPortfolioHistory">
+	  select * from AG_PORTFOLIO_HISTORY where id = #{id} and is_delete = 'N' order by sub_id asc
+	</select>
+	
+	<select id="getTotalCntPortfolio" parameterType="com.allgo.web.dto.SearchForm" resultType="int">
+	  SELECT count(1) from AG_PORTFOLIO
+	</select>
+	
 </mapper>

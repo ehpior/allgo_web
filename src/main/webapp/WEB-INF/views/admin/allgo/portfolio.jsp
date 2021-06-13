@@ -35,7 +35,7 @@
                             </form> -->
                         </div>
                         <div class="card-body">
-                            	<jsp:include page="/WEB-INF/views/admin/allgo/score_info.jsp" />
+                            	<jsp:include page="/WEB-INF/views/admin/allgo/portfolio_info.jsp" />
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,7 @@
 package com.allgo.web.redis;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -17,6 +19,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import com.allgo.web.dto.StockInfo;
+import com.allgo.web.service.AdminService;
+import com.allgo.web.vo.stock_list;
 
 @EnableScheduling
 @Configuration
@@ -25,6 +29,9 @@ public class RedisUpdateThread{
 	
 	@Autowired
 	RedisTemplate<String, Object> redisTemplate;
+	
+	@Autowired
+	AdminService adminServ;
 
 	@Resource(name="redisTemplate")
 	private ValueOperations<String, String> valueOps;
@@ -45,13 +52,14 @@ public class RedisUpdateThread{
 	StockInfo stockList;
 
 	@Scheduled(fixedDelay = 5000, initialDelay = 3000) 
-	private void scheduleTest(){ 
+	private void priceUpdate(){ 
 		Set<String> keys = redisTemplate.keys("stock:*");
 			
 		Iterator<String> iter = keys.iterator();
 		while(iter.hasNext()){
+			String key = "";
 			try{
-				String key = iter.next().toString();
+				key = iter.next().toString();
 				
 				String code = key.split(":")[1];
 				float price = Float.parseFloat(valueOps.get(key));
@@ -60,10 +68,29 @@ public class RedisUpdateThread{
 					stockList.getStocks().get(code).setPrice(price);
 				}
 			} catch(Exception e){
-				System.out.println("update");
+				System.out.println("redis-update error");
+				System.out.println(key);
 				System.out.println(e);
 			}
 		}
+	}
+	
+	@Scheduled(cron="0 40 8 * * MON-FRI") 
+	private void stockSet(){ 
+		System.out.println("stockSet");
+		
+		ArrayList<stock_list> stockInfo = adminServ.stockListInit();
+		
+		stockList.setCnt(stockInfo.size());
+		stockList.setStocks_list(stockInfo);
+		
+		HashMap<String, stock_list> stocks = new HashMap<>();
+		for(stock_list sinfo :stockInfo){
+			stocks.put(sinfo.getCode(), sinfo);
+		}
+		stockList.setStocks(stocks);
+		
+		System.out.println(stockInfo.size());
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.allgo.web.controller.admin;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import com.allgo.web.service.AdminService;
 import com.allgo.web.util.Paging;
 import com.allgo.web.util.SessionUtils;
 import com.allgo.web.util.WebUtils;
+import com.allgo.web.vo.AgPortfolio;
 import com.allgo.web.vo.ag_score;
 import com.allgo.web.vo.stock_cheg;
 import com.allgo.web.vo.stock_program;
@@ -139,6 +141,28 @@ public class AdminController {
 		request.setAttribute("paging", paging);
 		
 		return "admin/allgo/score";
+	}
+	
+	@RequestMapping(value = "/allgo/portfolio.allgo")
+	public String portfolio(HttpServletRequest request, HttpServletResponse response, SearchForm sForm){
+		logger.info("/portfolio.allgo");
+		
+		int cnt = adminServ.getTotalCntPortfolio();
+		
+		Paging paging = new Paging(cnt, sForm.getCurPage());
+		
+		sForm.indexSet(cnt);
+		
+		ArrayList<AgPortfolio> pList = adminServ.selectPortfolio(sForm);
+		
+		for(AgPortfolio hk : pList){
+			hk.setCur_price(stockList.getCur_price(hk.getCode()));
+		}
+		
+		request.setAttribute("pList", pList);
+		request.setAttribute("paging", paging);
+		
+		return "admin/allgo/portfolio";
 	}
 	
 	

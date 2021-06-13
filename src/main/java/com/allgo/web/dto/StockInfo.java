@@ -54,5 +54,9 @@ public class StockInfo {
 	public void setStocks(HashMap<String, stock_list> stocks) {
 		this.stocks = stocks;
 	}
+	
+	public int getCur_price(String code){
+		return (int)stocks.get(code).getPrice();
+	}
 
 }
