@@ -25,12 +25,12 @@
  		<c:forEach var="item" items="${pList}" varStatus="status">
  			<c:set var="history_len" value="${fn:length(item.agPortHistory) }" />
  			<tr>
- 				<td rowspan="${history_len+2}">${item.ag_type}</td>
- 				<td rowspan="${history_len+2 }">${item.stock_name}(${item.code })</td>
- 				<td rowspan="${history_len+2 }">${item.average_buy_price}</td>
- 				<td rowspan="${history_len+2 }">현재가</td>
- 				<td rowspan="${history_len+2 }">${item.status}</td>
- 				<td rowspan="${history_len+2 }">${item.holding_day}</td>
+ 				<td rowspan="${history_len+1}">${item.ag_type}</td>
+ 				<td rowspan="${history_len+1 }">${item.stock_name}(${item.code })</td>
+ 				<td rowspan="${history_len+1 }">${item.average_buy_price}</td>
+ 				<td rowspan="${history_len+1 }">현재가</td>
+ 				<td rowspan="${history_len+1 }">${item.status}</td>
+ 				<td rowspan="${history_len+1 }">${item.holding_day}</td>
  			</tr>
  				<c:forEach var="his" items="${item.agPortHistory }">
  				<tr>
